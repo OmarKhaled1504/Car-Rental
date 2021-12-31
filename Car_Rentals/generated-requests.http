@@ -1,0 +1,133 @@
+###
+POST http://localhost:8080/api/v1/car
+Content-Type: application/json
+
+{
+  "license": "1234fas",
+  "color": "black",
+  "manufacturer": "ford",
+  "model": "focus",
+  "year": 2010,
+  "price_per_day": 500
+
+}
+###
+POST http://localhost:8080/api/v1/customer
+Content-Type: application/json
+
+{
+  "username": "seng99",
+  "email": "seng@gmail.com",
+  "name": "abdelrahman",
+  "password": "952000"
+
+
+}
+<> 2021-12-31T042636.500.json
+###
+POST http://localhost:8080/api/v1/customer
+Content-Type: application/json
+
+{
+  "username": "seng99",
+  "email": "seng@gmail.com",
+  "name": "abdelrahman",
+  "password": "952000"
+
+
+}
+
+<> 2021-12-31T055355.500.json
+###
+POST http://localhost:8080/api/v1/customer
+Content-Type: application/json
+
+{
+  "username": "naw99",
+  "email": "nawaaaaar@gmail.com",
+  "name": "youssef",
+  "password": "nawnawgamedwow"
+
+
+}
+<> 2021-12-31T055159.500.json
+###
+POST http://localhost:8080/api/v1/customer
+Content-Type: application/json
+
+{
+  "username": "save_me_from_this",
+  "email": "ahahahaha@gmail.com",
+  "name": "leeh",
+  "password": "karim"
+
+
+}
+###
+POST http://localhost:8080/api/v1/customer
+Content-Type: application/json
+
+{
+  "username": "aboelnaga",
+  "email": "karim@gmail.com",
+  "name": "kareem",
+  "password": "tamam"
+
+
+}
+
+<> 2021-12-31T055813.500.json
+###
+POST http://localhost:8080/api/v1/car
+Content-Type: application/json
+
+{
+  "license": "smt584",
+  "color": "black",
+  "manufacturer": "nissan",
+  "model": "sunny",
+  "year": 2011,
+  "price_per_day": 800
+
+}
+
+<> 2021-12-31T061451.500.json
+###
+POST http://localhost:8080/api/v1/car
+Content-Type: application/json
+
+{
+  "license": "yaaah431",
+  "color": "blue",
+  "manufacturer": "nissan",
+  "model": "Gtr",
+  "year": 2021,
+  "price_per_day": 1000
+}
+###
+POST http://localhost:8080/api/v1/car
+Content-Type: application/json
+
+{
+  "license": "disha873",
+  "color": "yellow",
+  "manufacturer": "scooter",
+  "model": "may3rafsh",
+  "year": 2000,
+  "price_per_day": 400
+
+}
+###
+POST http://localhost:8080/api/v1/car
+Content-Type: application/json
+
+{
+  "license": "ti721",
+  "color": "green",
+  "manufacturer": "Kia",
+  "model": "Karens",
+  "year": 2019,
+  "price_per_day": 900
+}
+
+<> 2021-12-31T060419.500.json
