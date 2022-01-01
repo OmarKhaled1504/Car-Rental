@@ -21,6 +21,7 @@ public class reservations {
     @Id
     LocalDate end_date ;
     String status ;
+    int payment ;
     public reservations(){
 
     }
@@ -96,8 +97,17 @@ public class reservations {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public int getPayment() {
+        return payment;
+    }
+
+    public void setPayment(int payment) {
+        this.payment = payment;
+    }
+
     public String toString() {
-        return "reservations{License='" + this.License + "', username='" + this.username + "', start_date='" + this.start_date + "', end_date='" + this.end_date + "',status = '" + this.status + "'}";
+        return "reservations{License='" + this.License + "', username='" + this.username + "', start_date='" + this.start_date + "', end_date='" + this.end_date + "',status = '" + this.status + "',payment = '" + this.payment + "'}";
     }
 
 }

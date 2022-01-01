@@ -20,6 +20,6 @@ public class reservationsService {
     }
 
     public void addNewReservation(reservations reservations) {
-        this.reservationsRepository.insert(reservations.getLicense(), reservations.getUsername(),reservations.getStart_date(),reservations.getEnd_date(),reservations.getStatus());
+        this.reservationsRepository.insert(reservations.getLicense(), reservations.getUsername(),reservations.getStart_date(),reservations.getEnd_date(),reservations.getStatus(),reservations.getPayment());
 ;    }
 }

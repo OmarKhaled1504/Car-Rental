@@ -24,6 +24,7 @@ Create table IF not exists reservations(
      start_date date,
      end_date date,
      status varchar(30),
+     payment int,
      primary key(License,username,start_date,end_date),
      foreign key (License) references car(License),
      foreign key (username) references customer(username)

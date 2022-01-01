@@ -158,7 +158,8 @@ Content-Type: application/json
   "username": "aboelnaga",
   "start_date": "2021-05-03",
   "end_date": "2021-05-04",
-  "status": "picked up"
+  "status": "picked up",
+  "payment": 600
 
 
 }
@@ -176,4 +177,17 @@ Content-Type: application/json
   "price_per_day": 900,
   "status": "available"
 }
+###
+POST http://localhost:8080/api/v1/reservations
+Content-Type: application/json
 
+{
+  "license": "765abfsdas",
+  "username": "aboelnaga",
+  "start_date": "2021-05-03",
+  "end_date": "2021-05-04",
+  "status": "picked up",
+  "payment": 600
+
+
+}
