@@ -1,4 +1,4 @@
-###
+
 POST http://localhost:8080/api/v1/car
 Content-Type: application/json
 
@@ -8,7 +8,8 @@ Content-Type: application/json
   "manufacturer": "ford",
   "model": "focus",
   "year": 2010,
-  "price_per_day": 500
+  "price_per_day": 500,
+  "status": "reserved"
 
 }
 ###
@@ -30,7 +31,7 @@ Content-Type: application/json
 
 {
   "username": "seng99",
-  "email": "seng@gmail.com",
+  "email": "seang@gmadadil.com",
   "name": "abdelrahman",
   "password": "952000"
 
@@ -87,8 +88,8 @@ Content-Type: application/json
   "manufacturer": "nissan",
   "model": "sunny",
   "year": 2011,
-  "price_per_day": 800
-
+  "price_per_day": 800,
+  "status": "available"
 }
 
 <> 2021-12-31T061451.500.json
@@ -102,7 +103,8 @@ Content-Type: application/json
   "manufacturer": "nissan",
   "model": "Gtr",
   "year": 2021,
-  "price_per_day": 1000
+  "price_per_day": 1000,
+  "status": "out of service"
 }
 ###
 POST http://localhost:8080/api/v1/car
@@ -114,7 +116,8 @@ Content-Type: application/json
   "manufacturer": "scooter",
   "model": "may3rafsh",
   "year": 2000,
-  "price_per_day": 400
+  "price_per_day": 400,
+  "status": "reserved"
 
 }
 ###
@@ -127,7 +130,50 @@ Content-Type: application/json
   "manufacturer": "Kia",
   "model": "Karens",
   "year": 2019,
-  "price_per_day": 900
+  "price_per_day": 900,
+  "status": "available"
 }
 
 <> 2021-12-31T060419.500.json
+###
+POST http://localhost:8080/api/v1/car
+Content-Type: application/json
+
+{
+  "license": "765abs",
+  "color": "red",
+  "manufacturer": "hyundai",
+  "model": "elantra",
+  "year": 2016,
+  "price_per_day": 900,
+  "status": "available"
+
+}
+###
+POST http://localhost:8080/api/v1/reservations
+Content-Type: application/json
+
+{
+  "license": "765abs",
+  "username": "aboelnaga",
+  "start_date": "2021-05-03",
+  "end_date": "2021-05-04",
+  "status": "picked up"
+
+
+}
+
+###
+POST http://localhost:8080/api/v1/car
+Content-Type: application/json
+
+{
+  "license": "881234addada",
+  "color": "red",
+  "manufacturer": "hyundai",
+  "model": "elantra",
+  "year": 2016,
+  "price_per_day": 900,
+  "status": "available"
+}
+

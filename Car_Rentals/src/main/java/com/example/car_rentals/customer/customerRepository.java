@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
 @Repository
-public interface customerRepository extends JpaRepository<customer,customerKey>{
+public interface customerRepository extends JpaRepository<customer,String>{
     @Modifying
     @Transactional
     @Query(

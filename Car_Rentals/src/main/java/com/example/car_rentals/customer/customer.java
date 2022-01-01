@@ -10,11 +10,10 @@ import javax.persistence.Table;
 @Table(
         name = "customer"
 )
-@IdClass(customerKey.class)
 public class customer {
        @Id
        String username ;
-       @Id
+
        String email ;
        String name ;
        String password ;
@@ -36,14 +35,7 @@ public class customer {
     public void setUsername(String username) {
         this.username = username;
     }
-    @GeneratedValue(
-            strategy = GenerationType.IDENTITY
-    )
-    @Column(
-            name = "Id",
-            nullable = false,
-            precision = 0
-    )
+
 
     public String getEmail() {
         return this.email;
