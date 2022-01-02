@@ -15,15 +15,23 @@ public class CarController {
     public CarController(CarService carService) {
         this.carService = carService;
     }
+
     @GetMapping
     public List<Car> getCars() {
         return this.carService.getCars();
     }
+
     @PostMapping
     public void addNewCar(@RequestBody Car car) {
         System.out.println(car);
         this.carService.addNewCar(car);
     }
+
+    @GetMapping
+    public List<Car> getActiveCars() {
+        return this.carService.getActive();
+    }
+
 }
 
 

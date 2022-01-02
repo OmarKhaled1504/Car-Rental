@@ -15,7 +15,6 @@ public interface customerRepository extends JpaRepository<customer,String>{
     @Query(
             value = "Insert into customer(username,email,name,password) values(:username,:email,:name,:password)",
             nativeQuery = true
-
     )
     void insert (@Param("username") String username,@Param("email") String email,@Param("name") String name,@Param("password") String password );
 }

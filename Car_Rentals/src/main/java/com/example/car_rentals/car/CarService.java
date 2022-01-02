@@ -12,11 +12,13 @@ public class CarService {
     }
 
     public List<Car> getCars() {
-        return this.carRepository.findAll();
+        return this.carRepository.getAll();
     }
 
     public void addNewCar(Car car) {
         this.carRepository.insert(car.getLicense(), car.getColor(), car.getManufacturer(), car.getModel(),car.getYear(),car.getPrice_per_day(),car.getStatus());
     }
+
+    public List <Car> getActive (){return this.carRepository.getActive();}
 }
 

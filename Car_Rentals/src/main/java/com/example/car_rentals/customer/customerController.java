@@ -25,9 +25,5 @@ public class customerController {
         this.customerService.addNewcustomer(customer);
     }
 
-
-
-
-
 }
 
