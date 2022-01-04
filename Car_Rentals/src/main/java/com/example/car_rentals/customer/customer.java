@@ -12,9 +12,10 @@ import javax.persistence.Table;
 )
 public class customer {
        @Id
-       String username ;
+
 
        String email ;
+       String username ;
        String name ;
        String password ;
        public  customer(){
@@ -29,12 +30,7 @@ public class customer {
             precision = 0
     )
 
-    public String getUsername() {
-        return this.username;
-    }
-    public void setUsername(String username) {
-        this.username = username;
-    }
+
 
 
     public String getEmail() {
@@ -43,7 +39,12 @@ public class customer {
     public void setEmail(String email) {
         this.email = email;
     }
-
+    public String getUsername() {
+        return this.username;
+    }
+    public void setUsername(String username) {
+        this.username = username;
+    }
     public String getName() {
         return this.name;
     }

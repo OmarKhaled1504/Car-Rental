@@ -22,6 +22,7 @@ public class reservations {
     LocalDate end_date ;
     String status ;
     int payment ;
+    String payment_status ;
     public reservations(){
 
     }
@@ -106,8 +107,16 @@ public class reservations {
         this.payment = payment;
     }
 
+    public String getPayment_status() {
+        return this.payment_status;
+    }
+
+    public void setPayment_status(String payment_status) {
+        this.payment_status = payment_status;
+    }
+
     public String toString() {
-        return "reservations{License='" + this.License + "', username='" + this.username + "', start_date='" + this.start_date + "', end_date='" + this.end_date + "',status = '" + this.status + "',payment = '" + this.payment + "'}";
+        return "reservations{License='" + this.License + "', username='" + this.username + "', start_date='" + this.start_date + "', end_date='" + this.end_date + "',status = '" + this.status + "',payment = '" + this.payment + "',payment_stat = '" +this.payment_status+"'}";
     }
 
 }

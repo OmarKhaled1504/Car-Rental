@@ -27,10 +27,6 @@ public class CarController {
         this.carService.addNewCar(car);
     }
 
-    @GetMapping
-    public List<Car> getActiveCars() {
-        return this.carService.getActive();
-    }
 
 }
 

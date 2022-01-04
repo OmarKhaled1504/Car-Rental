@@ -18,12 +18,13 @@ public class Car {
     int year;
     int price_per_day ;
     String status ;
+    String region ;
 
     public Car() {
 
     }
 
-    public Car(String License, String Color, String manufacturer, String model, int year,int price_per_day,String status) {
+    public Car(String License, String Color, String manufacturer, String model, int year,int price_per_day,String status,String region) {
         this.License = License;
         this.Color = Color;
         this.manufacturer = manufacturer;
@@ -31,7 +32,7 @@ public class Car {
         this.year = year;
         this.price_per_day = price_per_day ;
         this.status = status ;
-
+        this.region = region ;
     }
 
     @GeneratedValue(
@@ -98,7 +99,15 @@ public class Car {
         this.status = status;
     }
 
+    public String getRegion() {
+        return this.region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
     public String toString (){
-        return "Car{License='" + this.License + "', Color='" + this.Color + "',  manufacturer='" + this.manufacturer + "', model='" + this.model + "', year = '" + this.year + "',price_per_day = '" + this.price_per_day + "',status = '" +this.status + "'}";
+        return "Car{License='" + this.License + "', Color='" + this.Color + "',  manufacturer='" + this.manufacturer + "', model='" + this.model + "', year = '" + this.year + "',price_per_day = '" + this.price_per_day + "',status = '" +this.status + "',region = '" +this.region + "'}";
     }
 }
