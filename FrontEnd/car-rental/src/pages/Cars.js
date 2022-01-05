@@ -38,7 +38,7 @@ function Cars() {
         <button className="button" onClick={Search} >Search</button>
         <button className="button" onClick={Modify} >Modify</button>
       </div>
-      {insert && <div>
+      {(insert || search) && <div>
          <div className="form-group">
                 <label>Lisence</label>
                 <input type="text" className="form-control" placeholder="Lisence" />
@@ -65,35 +65,6 @@ function Cars() {
             </div>
             <div>
             <button className="button" onClick={Sumbit} >Sumbit</button>
-            </div>
-        </div>}
-        {search && <div>
-         <div className="form-group">
-                <label>Lisence</label>
-                <input type="text" className="form-control" placeholder="Lisence" />
-            </div>
-            <div className="form-group">
-                <label>Color</label>
-                <input type="text" className="form-control" placeholder="Color" />
-            </div>
-            <div className="form-group">
-                <label>Manafacturer</label>
-                <input type="text" className="form-control" placeholder="Manafacturer" />
-            </div>
-            <div className="form-group">
-                <label>Model</label>
-                <input type="text" className="form-control" placeholder="Model" />
-            </div>
-            <div className="form-group">
-                <label>Office</label>
-                <input type="text" className="form-control" placeholder="Office" />
-            </div>
-            <div className="form-group">
-                <label>Price/Day</label>
-                <input type="text" className="form-control" placeholder="Price/Day" />
-            </div>
-            <div>
-            <button className="button" onClick={SumbitSearch} >Sumbit</button>
             </div>
         </div>}
       </div>
