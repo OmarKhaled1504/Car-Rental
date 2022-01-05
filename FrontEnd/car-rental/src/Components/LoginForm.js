@@ -1,33 +1,59 @@
-import React from 'react'
-import { useState } from 'react/cjs/react.development'
+import { useHistory } from "react-router-dom";
+import { useState } from "react";
+const Login = () => {
+    const history = useHistory();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
 
-function LoginForm({Login, error}) {
-    const [details,setDetails] = useState({name:"",email:"",password:""});
-    const submitHandler = e => {
-        e.preventDefault();
-        Login(details);
+    const submit = async() =>{
+
+  
+        let url = 'http://localhost:8080/api/v1/customer/' + email +'/'+ password
+        let bool = await fetch(url)
+        let response = await bool.json();
+
+        if (response === false) {
+            alert("Wrong email or password!")
+            return false;
+        }
+        else{
+            alert("el mfrod n5osh fel page")
+        }
     }
-    return (
-        <form onSubmit={submitHandler}>
-            <div className='form-inner'>
-                {/*ERROR */}
-                <div className='form-group'>
-                    <label htmlFor="name">Name:</label>
-                    <input type="text" name="name" id = "name" onChange={e=>setDetails({...details,name: e.target.value})} value={details.name} />
-                </div>
+    const signUp = ()=>{
+        history.push('/SignUp')
+    }
+
+  return (  
+    <div className="Login">
+        <div className="auth-inner">
+        <form >
+            <div className="form-group">
+                <label>Email</label>
+                <input type="email" className="form-control" id="email" required onChange={e => setEmail(e.target.value)}/>
+            </div>
+            <div className="form-group"> 
+                <label>Password</label>
+                <input type="password" className="form-control" id="psw" required onChange={e => setPassword(e.target.value)}></input>
+            </div>
+
+            <div>
                 <div className="form-group">
-                    <label htmlFor="email">Email:</label>
-                    <input type="email" name="email" id="email" onChange={e=>setDetails({...details,email: e.target.value})} value={details.email}/>
+                    <input type="checkbox" className="custom-control-input" id="customCheck1" />
+                    <label className="custom-control-label" htmlFor="customCheck1">Admin</label>
                 </div>
-                <div className="form-group">
-                    <label htmlFor="password">Password:</label>
-                    <input type="password" name="password" id="password"onChange={e=>setDetails({...details,password: e.target.value})} value={details.password} />
-                </div>
-                <input type="submit" value="LOGIN" />
+            </div>
+            <div>
+                <button onClick={submit} className="button" >Sign In</button>
+            </div>
+            <div>
+                <label>Don't have an account?</label>
+                <button className="button" onClick={signUp} >SignUp</button>
             </div>
         </form>
-    )
+   </div>
+ </div>
+)
 }
-
-export default LoginForm
+export default Login;
