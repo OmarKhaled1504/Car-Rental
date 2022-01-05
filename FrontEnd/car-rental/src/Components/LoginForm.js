@@ -4,21 +4,23 @@ const Login = () => {
     const history = useHistory();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
+    const [check, setCheck] = useState(null);
 
     const submit = async() =>{
-
-  
-        let url = 'http://localhost:8080/api/v1/customer/' + email +'/'+ password
-        let bool = await fetch(url)
-        let response = await bool.json();
-
-        if (response === false) {
-            alert("Wrong email or password!")
-            return false;
-        }
-        else{
-            alert("el mfrod n5osh fel page")
+        if (check && email === 'admin@admin.com' && password === 'admin'){
+            history.push('/admin');
+        }else{
+            let url = 'http://localhost:8080/api/v1/customer/' + email +'/'+ password
+            let bool = await fetch(url)
+            let response = await bool.json();
+    
+            if (response === false) {
+                alert("Wrong email or password!")
+                return false;
+            }
+            else{
+                alert("el mfrod n5osh fel page")
+            }
         }
     }
     const signUp = ()=>{
@@ -37,10 +39,9 @@ const Login = () => {
                 <label>Password</label>
                 <input type="password" className="form-control" id="psw" required onChange={e => setPassword(e.target.value)}></input>
             </div>
-
             <div>
                 <div className="form-group">
-                    <input type="checkbox" className="custom-control-input" id="customCheck1" />
+                    <input type="checkbox" className="custom-control-input" id="customCheck1" onChange={e => setCheck(e.target.checked)} />
                     <label className="custom-control-label" htmlFor="customCheck1">Admin</label>
                 </div>
             </div>

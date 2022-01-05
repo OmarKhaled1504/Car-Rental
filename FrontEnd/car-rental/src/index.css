@@ -96,6 +96,51 @@ img {
 .form-group{
   display:flex;
   flex-direction:column;
+} 
+
+.sidenav{
+height: 100%;
+width: 20%;
+position: fixed;
+z-index: 1;
+top: 0; 
+left: 0;
+background-color:#232323;
+transition: .5s ease;
+overflow-x: hidden; 
+padding-top: 20px;
+display: flex; 
+flex-direction: column;
+align-items: center;
 }
-
-
+.admin {
+  display: flex;
+  height: 10vh;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+.Cars,
+.Customers,
+.Reservations,
+.Reports{
+  display: flex;
+  height: 60vh;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  display:flex;
+  flex-direction:column;
+}
+.paddedButtons{
+  display: flex;
+  flex-direction: row;
+  width: 350px;
+  gap: 30px;
+}
+.paddedButtons2{
+  display: flex;
+  flex-direction: row;
+  width: 100px;
+  gap: 30px;
+}

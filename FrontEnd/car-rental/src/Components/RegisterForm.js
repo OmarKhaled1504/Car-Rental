@@ -1,13 +1,18 @@
 import React, { Component } from "react";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
- const  RegisterForm = ()=> {
+ const  SignUp = ()=> {
     const [UserName, setUserName] = useState('');
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
     const history = useHistory();
+    const SignUp = () =>{
+        
+
+    }
     const SignIn = () =>{
         history.push('/')
     }
@@ -15,6 +20,10 @@ import { useState } from "react";
             <div className="Register">
                 <div className="auth-inner">
                     <form>
+                    <div className="form-group">
+                            <label>Name</label>
+                            <input type="text" className="form-control" placeholder="Name" onChange={e => setName(e.target.value)}/>
+                        </div>
                         <div className="form-group">
                             <label>UserName</label>
                             <input type="text" className="form-control" placeholder="Username" onChange={e => setUserName(e.target.value) }/>
@@ -33,8 +42,9 @@ import { useState } from "react";
                             <label>Confirm-Password</label>
                             <input type="password" className="form-control" placeholder="Confirm-Password" onChange={e => setConfirmPassword(e.target.value)}/>
                         </div>
+                        
                         <div>
-                            <button type="submit" className="button">Sign Up</button>
+                            <button type="submit" className="button" onClick={SignUp}>Sign Up</button>
                         </div>
                         <div>
                             <label>Already have an Account?</label>
@@ -46,4 +56,4 @@ import { useState } from "react";
 
         ); 
 }
-export default RegisterForm;
+export default SignUp;
