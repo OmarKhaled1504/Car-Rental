@@ -6,29 +6,32 @@ function Cars() {
     const[search,setSearch] = useState(false);
     const [insert,setInsert] = useState(false);
     const [modify,setModify] = useState(false);
+    const [status,setStatus] = useState(null);
 
     const Sumbit = () =>{
-        setInsert(false)
-        setSearch(false)
-    }
-    const SumbitSearch = ()=>{
-        setInsert(false)
-        setSearch(false)
+        if (search){
+
+        }else if (insert){
+
+        }
+        setInsert(false);
+        setSearch(false);
+        setModify(false);
     }
     const Insert = () =>{
-        setInsert(true) 
-        setModify(false)
-        setSearch(false)
+        setInsert(true) ;
+        setModify(false);
+        setSearch(false);
     }
     const Search = () =>{
         setSearch(true);
-        setInsert(false)
-        setModify(false)
+        setInsert(false);
+        setModify(false);
     }
     const Modify = () =>{
         setModify(true);
-        setInsert(false)
-        setSearch(false)
+        setInsert(false);
+        setSearch(false);
     }
   return (
     <div className='Cars'>
@@ -67,8 +70,20 @@ function Cars() {
             <button className="button" onClick={Sumbit} >Sumbit</button>
             </div>
         </div>}
-      </div>
-
+        {modify && <div>
+            <div className="form-group">
+                <label>Lisence</label>
+                <input type="text" className="form-control" placeholder="Lisence" />
+            </div>
+            <div className="form-group">
+                <label>Status</label>
+                <select value={"Available"} onChange={(e) => {setStatus(e.target.value)}}>
+                    <option name="Available"> Available</option>
+                    <option name="Out of Serive">Out of Serive</option>
+                </select>
+            </div>
+        </div>}
+    </div>
   );
 }
 
