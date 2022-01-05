@@ -6,16 +6,17 @@ Create table IF not exists  car(
     year int,
     price_per_day int,
     status varchar(20),
+    region varchar(20),
     primary key (License)
     );
 Create table IF not exists customer(
 
-    username varchar(20),
-    email varchar(20) unique,
+    email varchar(20),
+    username varchar(20) unique,
     name varchar(30),
     password varchar(20),
 
-    primary key (username)
+    primary key (email)
 
 );
 Create table IF not exists reservations(
@@ -25,6 +26,7 @@ Create table IF not exists reservations(
      end_date date,
      status varchar(30),
      payment int,
+     payment_stat varchar(30),
      primary key(License,username,start_date,end_date),
      foreign key (License) references car(License),
      foreign key (username) references customer(username)

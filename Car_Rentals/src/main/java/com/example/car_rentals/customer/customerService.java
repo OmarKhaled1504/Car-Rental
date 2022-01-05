@@ -9,6 +9,6 @@ public class customerService {
     public customerService(customerRepository customerRepository) {this.customerRepository = customerRepository;}
     public List<customer> getcustomers() {return this.customerRepository.findAll();}
     public void addNewcustomer(customer customer){
-        this.customerRepository.insert(customer.getUsername(),customer.getEmail(),customer.getName(),customer.getPassword()) ;
+        this.customerRepository.insert(customer.getEmail(),customer.getUsername(),customer.getName(),customer.getPassword()) ;
     }
 }
