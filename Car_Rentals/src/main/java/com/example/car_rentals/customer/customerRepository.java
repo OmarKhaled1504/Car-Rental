@@ -23,4 +23,28 @@ public interface customerRepository extends JpaRepository<customer,String>{
             nativeQuery = true
     )
     List<customer> authenticate(@Param("email") String email, @Param("password") String password);
+    @Query(
+            value = "SELECT * from customer where email = :email OR username = :username ",
+            nativeQuery = true
+    )
+    List<customer> authenticateSignUp (@Param("email") String email,@Param("username") String username) ;
+
+    @Query(
+            value = "SELECT distinct customer.username from customer",
+            nativeQuery = true
+    )
+    List<String> getAllUserNames () ;
+
+    @Query(
+            value = "SELECT distinct customer.name from customer",
+            nativeQuery = true
+    )
+    List<String> getAllNames () ;
+
+    @Query(
+            value = "SELECT * from customer where (username in :username and name in :name) ",
+            nativeQuery = true
+    )
+    List<customer> filter (@Param("name") List<String> name,@Param("username") List<String> username);
+
 }

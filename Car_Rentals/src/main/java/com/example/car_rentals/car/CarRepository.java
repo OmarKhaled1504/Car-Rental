@@ -28,5 +28,55 @@ public interface CarRepository extends JpaRepository<Car, String> {
             nativeQuery = true)
     List<Car> getActive();
 
+    @Query(
+            value = "SELECT distinct car.manufacturer from car",
+            nativeQuery = true
+    )
+    List<String> getAllManufacturer () ;
+    @Query(
+            value = "SELECT distinct car.color from car",
+            nativeQuery = true
+    )
+    List<String> getAllColors () ;
+
+
+    @Query(
+            value = "SELECT distinct car.model from car",
+            nativeQuery = true
+    )
+    List<String> getAllModel () ;
+
+    @Query(
+            value = "SELECT distinct car.region from car",
+            nativeQuery = true
+    )
+    List<String> getAllRegions () ;
+
+
+    @Query(
+            value = "SELECT distinct car.license from car",
+            nativeQuery = true
+    )
+    List<String> getAllLicense () ;
+
+    @Query(
+            value = "SELECT distinct car.year from car",
+            nativeQuery = true
+    )
+    List<String> getAllyear () ;
+
+    @Query(
+            value = "SELECT distinct car.price from car",
+            nativeQuery = true
+    )
+    List<String> getAllprice () ;
+
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE car SET status = :status WHERE License = :License",
+            nativeQuery = true)
+    void modify(@Param("License") String License ,@Param("status") String status);
+
+
 }
 

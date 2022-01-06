@@ -7,7 +7,7 @@ import java.util.List ;
 @RequestMapping(
         path = {"api/v1/car"}
 )
-
+@CrossOrigin
 
 public class CarController {
     private final CarService carService ;
@@ -21,11 +21,17 @@ public class CarController {
         return this.carService.getCars();
     }
 
-    @PostMapping
+    @PostMapping("/insert")
     public void addNewCar(@RequestBody Car car) {
         System.out.println(car);
         this.carService.addNewCar(car);
     }
+    @PostMapping("/modify/{license}/{status}")
+    public void modify(@PathVariable String license, @PathVariable String status) {
+        this.carService.modify(license,status);
+    }
+
+
 
 
 }

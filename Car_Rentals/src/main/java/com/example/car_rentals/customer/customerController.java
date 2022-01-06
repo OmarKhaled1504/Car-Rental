@@ -9,29 +9,42 @@ import java.util.List ;
 @RequestMapping(
         path = {"api/v1/customer"}
 )
+@CrossOrigin
 public class customerController {
     private final customerService customerService ;
     @Autowired
     public customerController(customerService customerService) {
         this.customerService = customerService;
     }
+
     @GetMapping()
-    @CrossOrigin
     public List<customer> getcustomers() {
         return this.customerService.getcustomers();
     }
-    @PostMapping
+
+    @PostMapping()
     public void addNewcustomer(@RequestBody customer customer) {
         System.out.println(customer);
         this.customerService.addNewcustomer(customer);
     }
 
-
     @GetMapping("/verify")
-    @CrossOrigin
     public boolean authenticate(@RequestParam String email, @RequestParam String password) {
         boolean result = this.customerService.authenticate(email,password);
         System.out.println("received request from " + email + " " + password + " answer :" + result);
+        return result;
+    }
+
+    @GetMapping("/signup")
+    public boolean authenticateSignUp(@RequestParam String email, @RequestParam String username) {
+        boolean result = this.customerService.authenticateSignUp(email,username);
+        System.out.println("received request from " + email + " " + username + " answer :" + result);
+        return result;
+    }
+    @GetMapping("/filter/{name}/{username}")
+    public List<customer> filter(@PathVariable String name, @PathVariable String username) {
+        List<customer> result = this.customerService.filter(name,username);
+        System.out.println("received request from " + name + " " + username + " answer :" + result);
         return result;
     }
 

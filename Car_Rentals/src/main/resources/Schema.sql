@@ -6,6 +6,7 @@ Create table IF not exists  car(
     year int,
     price_per_day int,
     status varchar(20),
+    region varchar (30),
     primary key (License)
     );
 Create table IF not exists customer(

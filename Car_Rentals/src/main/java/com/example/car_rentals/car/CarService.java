@@ -20,5 +20,9 @@ public class CarService {
     }
 
     public List <Car> getActive (){return this.carRepository.getActive();}
+
+    void modify (String license , String status){
+        this.carRepository.modify(license, status);
+    }
 }
 

@@ -1,6 +1,8 @@
 package com.example.car_rentals.customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 import java.util.List ;
 @Service
 public class customerService {
@@ -15,5 +17,29 @@ public class customerService {
     public boolean authenticate(String email, String password) {
         List<customer> result = this.customerRepository.authenticate(email, password);
         return !result.isEmpty();
+    }
+
+    public boolean authenticateSignUp (String email ,String username){
+        List<customer> result = this.customerRepository.authenticateSignUp(email,username);
+        return result.isEmpty();
+    }
+
+    public List<customer> filter(String name , String username){
+        List<String> usernames = new ArrayList<>();
+        List<String> names = new ArrayList<>();
+        System.out.println("habal");
+        System.out.println(name);
+        System.out.println(username);
+        if(name.equals("null")){
+            names =  this.customerRepository.getAllNames();
+        }else {
+            names.add(name);
+        }
+        if (username.equals("null")){
+            usernames = this.customerRepository.getAllUserNames();
+        }else{
+            usernames.add(username);
+        }
+        return this.customerRepository.filter(names,usernames);
     }
 }
