@@ -13,8 +13,14 @@ public interface customerRepository extends JpaRepository<customer,String>{
     @Modifying
     @Transactional
     @Query(
-            value = "Insert into customer(email,name,username,password) values(:email,:username,:name,:password)",
+            value = "Insert into customer(email,name,username,password) values(:email,:name,:username,:password)",
             nativeQuery = true
     )
     void insert (@Param("email") String email,@Param("username") String username,@Param("name") String name,@Param("password") String password );
+
+    @Query(
+            value = "SELECT * from customer where email = :email and password = :password ",
+            nativeQuery = true
+    )
+    List<customer> authenticate(@Param("email") String email, @Param("password") String password);
 }

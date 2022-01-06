@@ -11,4 +11,9 @@ public class customerService {
     public void addNewcustomer(customer customer){
         this.customerRepository.insert(customer.getEmail(),customer.getUsername(),customer.getName(),customer.getPassword()) ;
     }
+
+    public boolean authenticate(String email, String password) {
+        List<customer> result = this.customerRepository.authenticate(email, password);
+        return !result.isEmpty();
+    }
 }

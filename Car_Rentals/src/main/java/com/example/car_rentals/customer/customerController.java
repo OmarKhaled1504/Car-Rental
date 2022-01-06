@@ -16,6 +16,7 @@ public class customerController {
         this.customerService = customerService;
     }
     @GetMapping()
+    @CrossOrigin
     public List<customer> getcustomers() {
         return this.customerService.getcustomers();
     }
@@ -23,6 +24,15 @@ public class customerController {
     public void addNewcustomer(@RequestBody customer customer) {
         System.out.println(customer);
         this.customerService.addNewcustomer(customer);
+    }
+
+
+    @GetMapping("/verify")
+    @CrossOrigin
+    public boolean authenticate(@RequestParam String email, @RequestParam String password) {
+        boolean result = this.customerService.authenticate(email,password);
+        System.out.println("received request from " + email + " " + password + " answer :" + result);
+        return result;
     }
 
 }

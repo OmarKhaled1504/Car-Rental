@@ -1,31 +1,49 @@
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
+import { useEffect } from "react";
+import axios from 'axios';
 const Login = () => {
     const history = useHistory();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [check, setCheck] = useState(null);
+    const [verify, setVerify] = useState(null)
+    const [as, setAs] = useState(null)
 
-    const submit = async() =>{
+    const submit = async(e) =>{
         if (check && email === 'admin@admin.com' && password === 'admin'){
             history.push('/admin');
         }else{
-            let url = 'http://localhost:8080/api/v1/customer/' + email +'/'+ password
-            let bool = await fetch(url)
-            let response = await bool.json();
-    
-            if (response === false) {
-                alert("Wrong email or password!")
-                return false;
-            }
-            else{
-                alert("el mfrod n5osh fel page")
+            e.preventDefault()
+            let response = await axios.get('http://localhost:8080/api/v1/customer/verify', { params: {
+                    email,
+                    password
+                }})
+            let data = await response.data
+            if (data) {
+                history.push('/admin')
+            }else {
+                history.push('/SignUp')
             }
         }
     }
     const signUp = ()=>{
         history.push('/SignUp')
     }
+
+    // useEffect(() => {
+    //     async function fetchMyAPI() {
+    //         let response = await axios.get('http://localhost:8080/api/v1/customer/verify', { params: {
+    //                 email,
+    //                 password
+    //             }})
+    //         let data = await response.data
+    //         setVerify(data)
+    //     }
+    //
+    //     fetchMyAPI()
+    // }, [as])
+
 
   return (  
     <div className="Login">
