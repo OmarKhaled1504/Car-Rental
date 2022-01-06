@@ -1,15 +1,47 @@
 import React, { Component } from "react";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
+import axios from 'axios';
  const  SignUp = ()=> {
-    const [UserName, setUserName] = useState('');
+    const [username, setUserName] = useState('');
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    //const [response , setResponse] = useState('');
 
     const history = useHistory();
-    const SignUp = () =>{
+    const SignUp = async (e) =>{
+        e.preventDefault()
+        let response = await axios.get('http://localhost:8080/api/v1/customer/signup', { params:{
+                email,
+                username
+            }})
+        let data = await response.data
+        // let response = await axios.get('http://localhost:8080/api/v1/customer/signup/'+email+'/'+userName)
+        // let data = await response.data
+        if(password != confirmPassword){
+            alert("Invalid Confirm Password")
+        }else if (data){
+            var jsonData = {
+                "email": email,
+                "name": name,
+                "username":username,
+                "password": password
+            }
+            console.log(jsonData)
+             fetch('http://localhost:8080/api/v1/customer', { 
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            body: JSON.stringify(jsonData) 
+        })
+                history.push('/admin')
+        }else {
+            alert("Username or email already exists");
+        }
         
 
     }

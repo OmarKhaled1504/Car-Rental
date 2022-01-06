@@ -23,7 +23,7 @@ const Login = () => {
             if (data) {
                 history.push('/admin')
             }else {
-                history.push('/SignUp')
+                alert("Invalid email or password")
             }
         }
     }

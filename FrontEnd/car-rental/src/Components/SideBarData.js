@@ -4,6 +4,7 @@ import { AiFillCar } from "react-icons/ai";
 import { FiUsers } from "react-icons/fi";
 import { BiLogOut } from "react-icons/bi";
 import { BiMoney } from "react-icons/bi";
+import {IoCarSportOutline} from "react-icons/io5";
 export const SidebarData = [
   {
     title: 'Customers',
@@ -14,7 +15,7 @@ export const SidebarData = [
   {
     title: 'Cars',
     path: '/admin/Cars',
-    icon: <AiFillCar/>,
+    icon: <IoCarSportOutline/>,
     cName: 'nav-text'
   },
   {
