@@ -1,16 +1,22 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { useState } from 'react/cjs/react.development';
 import Navbar from '../Components/NavBar';
+import BlogList from '../Components/BlogList';
 
 function Cars() {
     const[search,setSearch] = useState(false);
     const [insert,setInsert] = useState(false);
     const [modify,setModify] = useState(false);
     const [status,setStatus] = useState(null);
+    const [cars, setCars] = useState(null)
 
     const Sumbit = () =>{
         if (search){
-
+            setCars([{
+                Lisence:'habal',color:'urg',manufacturer:'rjvne',model:'uvbtr'} ,
+                {Lisence:'bdbg',color:'dbgg',manufacturer:'tebt',model:'rb'}])
+            setStatus(true)
         }else if (insert){
 
         }
@@ -27,9 +33,22 @@ function Cars() {
         setSearch(true);
         setInsert(false);
         setModify(false);
+
     }
     const Modify = () =>{
         setModify(true);
+        setInsert(false);
+        setSearch(false);
+    }
+    useEffect(() => {
+        console.log("rueirrgr");
+    }, [status])
+    const handleDelete = () =>{
+
+    }
+    const Return = () => {
+        setStatus(false);
+        setModify(false);
         setInsert(false);
         setSearch(false);
     }
@@ -41,6 +60,10 @@ function Cars() {
         <button className="button" onClick={Search} >Search</button>
         <button className="button" onClick={Modify} >Modify</button>
       </div>
+    {status && <div>
+                <BlogList blogs={cars} title="All Blogs" handleDelete={handleDelete} />
+                <button className='button' onClick={Return}> return </button>
+             </div>}
       {(insert || search) && <div>
          <div className="form-group">
                 <label>Lisence</label>
