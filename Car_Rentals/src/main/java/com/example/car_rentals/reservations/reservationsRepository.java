@@ -1,5 +1,6 @@
 package com.example.car_rentals.reservations;
 
+import com.example.car_rentals.customer.customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -36,4 +37,26 @@ public interface reservationsRepository extends JpaRepository<reservations, comp
                     "On car.License= reservations.License;",
             nativeQuery = true)
     List<Map<String, Object>> getAllDetails();
+    @Query(
+            value = "SELECT distinct reservations.username from reservations",
+            nativeQuery = true
+    )
+    List<String> getAllUsers () ;
+    @Query(
+            value = "SELECT distinct reservations.start_date from reservations",
+            nativeQuery = true
+    )
+    List<LocalDate> getAllDates () ;
+    @Query(
+            value = "SELECT distinct reservations.license from reservations",
+            nativeQuery = true
+    )
+    List<String> getAllLicenses () ;
+    @Query(
+            value = "SELECT distinct reservations.payment from reservations",
+            nativeQuery = true
+    )
+    List<Integer> getAllPayments () ;
+    List<reservations> reservations_filter (@Param("username") List<String> usernames, @Param("license") List<String> licenses,@Param("start_date") List<LocalDate> dates,@Param("payment") List<Integer> payments) ;
+
 }
