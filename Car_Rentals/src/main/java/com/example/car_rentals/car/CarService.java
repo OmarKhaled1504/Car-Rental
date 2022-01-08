@@ -16,7 +16,7 @@ public class CarService {
     }
 
     public void addNewCar(Car car) {
-        this.carRepository.insert(car.getLicense(), car.getColor(), car.getManufacturer(), car.getModel(),car.getYear(),car.getPrice_per_day(),car.getStatus(),car.getRegion());
+        this.carRepository.insert(car.getLicense(), car.getColor(), car.getManufacturer(),car.getCar_type(), car.getModel(),car.getYear(),car.getPrice_per_day(),car.getCar_status(),car.getRegion(),car.getImage());
     }
 
     public List <Car> getActive (){return this.carRepository.getActive();}

@@ -14,9 +14,9 @@ import java.util.List;
 public interface CarRepository extends JpaRepository<Car, String> {
     @Modifying
     @Transactional
-    @Query(value = "Insert into car (License,Color,manufacturer,model,year,price_per_day,status,region) values(:License,:Color,:manufacturer,:model,:year,:price_per_day,:status,:region)",
+    @Query(value = "Insert into car (License,Color,manufacturer,car_type,model,year,price_per_day,car_status,region,image) values(:License,:Color,:manufacturer,:car_type,:model,:year,:price_per_day,:car_status,:region,:image)",
             nativeQuery = true)
-    void insert(@Param("License") String License, @Param("Color") String Color, @Param("manufacturer") String manufacturer, @Param("model") String model, @Param("year") int year,@Param("price_per_day") int price_per_day,@Param("status") String status,@Param("region") String region);
+    void insert(@Param("License") String License, @Param("Color") String Color, @Param("manufacturer") String manufacturer,@Param("car_type") String car_type, @Param("model") String model, @Param("year") int year,@Param("price_per_day") int price_per_day,@Param("car_status") String car_status,@Param("region") String region,@Param("image") String image);
 
     @Transactional
     @Query(value = "Select * from car",

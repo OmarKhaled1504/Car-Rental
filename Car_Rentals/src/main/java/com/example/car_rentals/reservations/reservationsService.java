@@ -25,7 +25,7 @@ public class reservationsService {
     }
 
     public void addNewReservation(reservations reservations) {
-        this.reservationsRepository.insert(reservations.getLicense(), reservations.getUsername(),reservations.getStart_date(),reservations.getEnd_date(),reservations.getStatus(),reservations.getPayment(),reservations.getPayment_status());
+        this.reservationsRepository.insert(reservations.getLicense(), reservations.getUsername(),reservations.getStart_date(),reservations.getEnd_date(),reservations.getReservation_status(),reservations.getPayment(),reservations.getPayment_status());
 ;    }
 
     public  List<Map<String,Object>> getAllDetails() {

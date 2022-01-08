@@ -14,24 +14,28 @@ public class Car {
     String License;
     String Color;
     String manufacturer;
+    String car_type ;
     String model;
     int year;
     int price_per_day ;
-    String status ;
+    String car_status ;
     String region ;
+    String image ;
+
 
     public Car() {
 
     }
 
-    public Car(String License, String Color, String manufacturer, String model, int year,int price_per_day,String status,String region) {
+    public Car(String License, String Color, String manufacturer,String car_type, String model, int year,int price_per_day,String car_status,String region,String image) {
         this.License = License;
         this.Color = Color;
         this.manufacturer = manufacturer;
+        this.car_type = car_type ;
         this.model = model;
         this.year = year;
         this.price_per_day = price_per_day ;
-        this.status = status ;
+        this.car_status = car_status ;
         this.region = region ;
     }
 
@@ -67,6 +71,14 @@ public class Car {
         this.manufacturer = manufacturer;
     }
 
+    public String getCar_type() {
+        return this.car_type;
+    }
+
+    public void setCar_type(String car_type) {
+        this.car_type = car_type;
+    }
+
     public String getModel() {
         return this.model;
     }
@@ -91,12 +103,12 @@ public class Car {
         this.price_per_day = price_per_day;
     }
 
-    public String getStatus() {
-        return this.status;
+    public String getCar_status() {
+        return this.car_status;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setCar_status(String car_status) {
+        this.car_status = car_status;
     }
 
     public String getRegion() {
@@ -107,7 +119,15 @@ public class Car {
         this.region = region;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public String toString (){
-        return "Car{License='" + this.License + "', Color='" + this.Color + "',  manufacturer='" + this.manufacturer + "', model='" + this.model + "', year = '" + this.year + "',price_per_day = '" + this.price_per_day + "',status = '" +this.status + "',region = '" +this.region + "'}";
+        return "Car{License='" + this.License + "', Color='" + this.Color + "',  manufacturer='" + this.manufacturer + "',car_type = '" +this.car_type +"', model='" + this.model + "', year = '" + this.year + "',price_per_day = '" + this.price_per_day + "',status = '" +this.car_status + "',region = '" +this.region + "',image = '" +this.image+"'}";
     }
 }
