@@ -21,7 +21,7 @@ function Cars() {
     const [carType,setType] = useState(null);
     
     const Sumbit = async (e) =>{
-        var x = parseInt(year)
+         var x = parseInt(year)
         var y = parseInt(price_day)
         if (search){
             const carStatus = document.getElementById("carStatus").value;

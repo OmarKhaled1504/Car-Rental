@@ -27,9 +27,6 @@ public class customerService {
     public List<customer> filter(String name , String username){
         List<String> usernames = new ArrayList<>();
         List<String> names = new ArrayList<>();
-        System.out.println("habal");
-        System.out.println(name);
-        System.out.println(username);
         if(name.equals("null")){
             names =  this.customerRepository.getAllNames();
         }else {

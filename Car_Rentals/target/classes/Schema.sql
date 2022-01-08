@@ -14,7 +14,7 @@ Create table IF not exists  car(
 Create table IF not exists customer(
 
     username varchar(20),
-    email varchar(20) unique,
+    email varchar(40) unique,
     name varchar(30),
     password varchar(20),
     primary key (username)
