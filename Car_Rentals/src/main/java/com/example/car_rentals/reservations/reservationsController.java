@@ -35,8 +35,8 @@ public class reservationsController {
         this.reservationsService.addNewReservation(reservations);
     }
 
-    @GetMapping("/details")
-    public  List<Map<String,Object>> getAllDetails(){
-        return this.reservationsService.getAllDetails();
-    }
+//    @GetMapping("/details")
+//    public  List<Map<String,Object>> getAllDetails(){
+//        return this.reservationsService.getAllDetails();
+//    }
 }

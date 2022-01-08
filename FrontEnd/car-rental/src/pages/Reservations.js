@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from '../Components/NavBar';
+import { useState } from 'react';
 
 function Reservations() {
   const[search,setSearch] = useState(false);
@@ -16,35 +17,35 @@ function Reservations() {
       {search && <div>
             <div className="form-group">
                 <label>License</label>
-                <input type="text" className="form-control" required placeholder="License"onChange={e => setLicense(e.target.value) } />
+                <input type="text" className="form-control" required placeholder="License"  />
             </div>
             <div className="form-group">
                 <label>Color</label>
-                <input type="text" className="form-control" required placeholder="Color"onChange={e => setColor(e.target.value)}  />
+                <input type="text" className="form-control" required placeholder="Color"  />
             </div>
             <div className="form-group">
                 <label>Manafacturer</label>
-                <input type="text" className="form-control" required placeholder="Manafacturer"onChange={e => setManufacturer(e.target.value)}  />
+                <input type="text" className="form-control" required placeholder="Manafacturer" />
             </div>
             <div className="form-group">
                 <label>Car Type</label>
-                <input type="text" className="form-control" required placeholder="Car Type"onChange={e => setType(e.target.value)}  />
+                <input type="text" className="form-control" required placeholder="Car Type" />
             </div>
             <div className="form-group">
                 <label>Model</label>
-                <input type="text" className="form-control" required placeholder="Model"onChange={e => setModel(e.target.value)} />
+                <input type="text" className="form-control" required placeholder="Model" />
             </div>
             <div className="form-group">
                 <label>Year</label>
-                <input type="text" className="form-control" required placeholder="Model"onChange={e => setYear(e.target.value)}  />
+                <input type="text" className="form-control" required placeholder="Model"  />
             </div>
             <div className="form-group">
                 <label>Office</label>
-                <input type="text" className="form-control" required placeholder="Office"onChange={e => setOffice(e.target.value)} />
+                <input type="text" className="form-control" required placeholder="Office" />
             </div>
             <div className="form-group">
                 <label>Price/Day</label>
-                <input type="text" className="form-control" required placeholder="Price/Day"onChange={e => setprice_day(e.target.value)} />
+                <input type="text" className="form-control" required placeholder="Price/Day" />
             </div>
             {search &&  <div className="form-group">
                 <label>Status</label>
@@ -56,7 +57,7 @@ function Reservations() {
                
             </div>}
             <div>
-            <button className="button" onClick={Sumbit} >Submit</button>
+            <button className="button"  >Submit</button>
             </div>
         </div>}
     </div>

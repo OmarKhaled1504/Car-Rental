@@ -21,7 +21,7 @@ const Login = () => {
                 }})
             let data = await response.data
             if (data) {
-                history.push('/admin')
+                history.push('/user')
             }else {
                 alert("Invalid email or password")
             }
