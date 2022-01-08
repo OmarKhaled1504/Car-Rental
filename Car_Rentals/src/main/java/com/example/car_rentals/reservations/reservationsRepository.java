@@ -17,10 +17,10 @@ public interface reservationsRepository extends JpaRepository<reservations, comp
     @Transactional
     @Modifying
     @Query(
-            value = "Insert into reservations(License,username,start_date,end_date,status,payment,payment_stat) " +
-                    "values (:License,:username,:start_date,:end_date,:status,:payment,:payment_stat)",
+            value = "Insert into reservations(License,username,start_date,end_date,reservation_status,payment,payment_status) " +
+                    "values (:License,:username,:start_date,:end_date,:reservation_status,:payment,:payment_status)",
             nativeQuery = true)
-    void insert(@Param("License") String License, @Param("username") String username, @Param("start_date") LocalDate start_date, @Param("end_date") LocalDate end_date, @Param("status") String status, @Param("payment") int payment, @Param("payment_stat") String payment_stat);
+    void insert(@Param("License") String License, @Param("username") String username, @Param("start_date") LocalDate start_date, @Param("end_date") LocalDate end_date, @Param("reservation_status") String reservation_status, @Param("payment") int payment, @Param("payment_status") String payment_status);
 
     @Transactional
     @Query(
