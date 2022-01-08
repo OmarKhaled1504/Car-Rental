@@ -4,11 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.Tuple;
 
@@ -35,8 +31,9 @@ public class reservationsController {
         this.reservationsService.addNewReservation(reservations);
     }
 
-//    @GetMapping("/details")
-//    public  List<Map<String,Object>> getAllDetails(){
-//        return this.reservationsService.getAllDetails();
-//    }
+    @GetMapping("/details")
+    public  List<Map<String,Object>> getAllDetails(@RequestParam (defaultValue = "null") String License,@RequestParam(defaultValue = "null") String username,@RequestParam(defaultValue = "null") String name,
+                                                   @RequestParam(defaultValue = "null") String manufacturer,@RequestParam(defaultValue = "null") String model,@RequestParam(defaultValue = "0") String payment){
+        return this.reservationsService.getAllDetails();
+    }
 }
