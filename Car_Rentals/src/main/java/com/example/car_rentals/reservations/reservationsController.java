@@ -1,11 +1,16 @@
 package com.example.car_rentals.reservations;
+import java.util.Dictionary;
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.persistence.Tuple;
 
 @RestController
 @RequestMapping(
@@ -28,5 +33,10 @@ public class reservationsController {
     public void addNewReservation(@RequestBody reservations reservations) {
         System.out.println(reservations);
         this.reservationsService.addNewReservation(reservations);
+    }
+
+    @GetMapping("/details")
+    public  List<Map<String,Object>> getAllDetails(){
+        return this.reservationsService.getAllDetails();
     }
 }
