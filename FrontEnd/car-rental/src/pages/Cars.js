@@ -13,34 +13,57 @@ function Cars() {
     const [cars, setCars] = useState(null);
     const [License,setLicense] = useState(null);
     const [Color,setColor] = useState(null);
-    const [Manafacturer,setManufacturer] = useState(null);
+    const [Manufacturer,setManufacturer] = useState(null);
     const [Model,setModel] = useState(null);
     const [Office,setOffice] = useState(null);
     const [price_day,setprice_day] = useState(null)
     const [year,setYear] = useState(null)
-
-    const Sumbit = () =>{
+    const [carType,setType] = useState(null);
+    
+    const Sumbit = async (e) =>{
+        var x = parseInt(year)
+        var y = parseInt(price_day)
         if (search){
-            setCars([{
-                Lisence:'0Pguir',color:'urg',manufacturer:'rjvne',model:'uvbtr'} ,
-                {Lisence:'bdbg',color:'dbgg',manufacturer:'tebt',model:'rb'},
-                {Lisence:'bdbg',color:'dbgg',manufacturer:'tebt',model:'rb'}])
-            setStatus(true)
+            const carStatus = document.getElementById("carStatus").value;
+            setSearch(false);
+            e.preventDefault();
+            let response = await axios.get('http://localhost:8080/api/v1/car/filter', { params: {
+                License,
+                Color,
+                Manufacturer,
+                Model,
+                x,
+                Office,
+                y,
+                carStatus,
+                carType
+            }});
+            let data = response.data;
+            setLicense(null);
+            setColor(null);
+            setManufacturer(null);
+            setModel(null);
+            setOffice(null);
+            setprice_day(null);
+            setYear(null);
+            setType(null);
+            setCars(data);
+            setStatus(true);
         }else if (insert){
-            var x = parseInt(year)
-            var y = parseInt(price_day)
+           
             var jsonData = {
                 "license": License,
                 "color": Color,
-                "manafacturer":Manafacturer,
+                "manufacturer":Manufacturer,
                 "model": Model,
                 "year" :x,
                 "region" : Office,
                 "price_per_day":y,
-                "status" : "Available"
+                "status" : "Available",
+                "car_type" : carType
             }
             console.log(jsonData)
-             fetch('http://localhost:8080/api/v1/car', { 
+             fetch('http://localhost:8080/api/v1/car/insert', { 
                 method: 'POST',
                 mode: 'cors',
                 headers: {
@@ -103,7 +126,7 @@ function Cars() {
              </div>}
       {(insert || search) && <div>
             <div className="form-group">
-                <label>Lisence</label>
+                <label>License</label>
                 <input type="text" className="form-control" required placeholder="License"onChange={e => setLicense(e.target.value) } />
             </div>
             <div className="form-group">
@@ -113,6 +136,10 @@ function Cars() {
             <div className="form-group">
                 <label>Manafacturer</label>
                 <input type="text" className="form-control" required placeholder="Manafacturer"onChange={e => setManufacturer(e.target.value)}  />
+            </div>
+            <div className="form-group">
+                <label>Car Type</label>
+                <input type="text" className="form-control" required placeholder="Car Type"onChange={e => setType(e.target.value)}  />
             </div>
             <div className="form-group">
                 <label>Model</label>
@@ -130,8 +157,17 @@ function Cars() {
                 <label>Price/Day</label>
                 <input type="text" className="form-control" required placeholder="Price/Day"onChange={e => setprice_day(e.target.value)} />
             </div>
+            {search &&  <div className="form-group">
+                <label>Status</label>
+                <select id = "carStatus">
+                    <option name="All"> All</option>
+                    <option name="Available"> Available</option>
+                    <option name="Out of Serive">Out of Serive</option>
+                </select>
+               
+            </div>}
             <div>
-            <button className="button" onClick={Sumbit} >Sumbit</button>
+            <button className="button" onClick={Sumbit} >Submit</button>
             </div>
         </div>}
         {modify && <div>
