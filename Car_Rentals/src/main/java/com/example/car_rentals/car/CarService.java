@@ -3,6 +3,7 @@ package com.example.car_rentals.car;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,13 +74,13 @@ public class CarService {
         } else {
             year.add(car.getYear());
         }
-        if (! car.getCar_status().equals("All")) {
+        if (!car.getCar_status().equals("All")) {
             status.add(car.getCar_status());
         } else {
             status.add("Available");
             status.add("Out of Service");
         }
-        return this.carRepository.filter(carTypes, colors, licenses, manufacturers, models, regions, maxPrice,year,status);
+        return this.carRepository.filter(carTypes, colors, licenses, manufacturers, models, regions, maxPrice, year, status);
     }
 
     public void addNewCar(Car car) {
@@ -96,6 +97,35 @@ public class CarService {
 
     void modify(String license, String status) {
         this.carRepository.modify(license, status);
+    }
+
+    public List<Car> getUserCars(List<String> color, List<String> region, List<String> type, String startDate, String endDate, int price) {
+        List<String> colors = new ArrayList<>();
+        List<String> regions = new ArrayList<>();
+        List<String> types = new ArrayList<>();
+
+
+        if (color.isEmpty()) {
+            colors = this.carRepository.getAllColors();
+        } else {
+            colors = color;
+        }
+        if (region.isEmpty()) {
+            regions = this.carRepository.getAllRegions();
+        } else {
+            regions = region;
+        }
+        if (type.isEmpty()) {
+            types = this.carRepository.getAllTypes();
+        } else {
+            types = type;
+        }
+        if (price == 0) {
+            price = this.carRepository.getMaxPrice();
+        }
+
+
+        return this.carRepository.userFilter(colors, types, regions, startDate, endDate, price);
     }
 }
 

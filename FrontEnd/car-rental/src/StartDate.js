@@ -6,9 +6,9 @@ import DatePicker from '@mui/lab/DatePicker';
 import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
 
 
-export default function StartDate() {
+export default function StartDate (){
   const [value, setValue] = React.useState(new Date());
-
+  
   return (
     <div className='container5'>
        <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -20,8 +20,25 @@ export default function StartDate() {
             setValue(newValue);
           }}
           renderInput={(params) => <TextField {...params} />}
-        />
+          />
         </LocalizationProvider>
     </div>
   );
 }
+
+//   return (
+//     <div className='container5'>
+//        <LocalizationProvider dateAdapter={AdapterDateFns}>
+//      <DesktopDatePicker
+//           label="For desktop"
+//           value={value}
+//           minDate={new Date('2017-01-01')}
+//           onChange={(newValue) => {
+//             setValue(newValue);
+//           }}
+//           renderInput={(params) => <TextField {...params} />}
+//         />
+//         </LocalizationProvider>
+//     </div>
+//   );
+// }
