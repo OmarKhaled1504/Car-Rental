@@ -92,9 +92,9 @@ public interface reservationsRepository extends JpaRepository<reservations, comp
             nativeQuery = true)
     void modify(@Param("username") String username, @Param("license") String license, @Param("start_date") String start_date, @Param("end_date") String end_date);
 
-    @Query(
-            value = "Select COUNT(*) as count , sum(payment) as sum" +
+    @Query(value = "Select COUNT(*) as count , sum(payment) as sum" +
                     " FROM reservations where reservations.start_date between :start_date and :end_date",
+
             nativeQuery = true)
     List<Map<String, Object>> getReports(@Param("start_date") String start_date, @Param("end_date") String end_date);
 
