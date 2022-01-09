@@ -137,24 +137,25 @@ function Cars() {
                             <th>price per day</th>
                             <th>Status</th>
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            cars.map((car) => (
-                                <tr key={car.license}>
-                                    <td>{car.manufacturer}</td>
-                                    <td>{car.model}</td>
-                                    <td>{car.region}</td>
-                                    <td>{car.car_type}</td>
-                                    <td>{car.price_per_day}</td>
-                                    <td>{car.car_status}</td>
-                                    <td />
-                                </tr>
-                            ))
-                        }
-                    </tbody>
-                </table>
+                </tr>
+                </thead>
+                <tbody>
+                    {
+                        cars.map((car) => (
+                            <tr key={car.license}>
+                                <td>{car.manufacturer}</td>
+                                <td>{car.model}</td>
+                                <td>{car.region}</td>
+                                <td>{car.car_type}</td>
+                                <td>{car.license}</td>
+                                <td>{car.car_status}</td> 
+                                <td/>
+                            </tr>
+                        ))
+                    }
+                </tbody>
+            </table>
+
                 <button className='button' onClick={Return}> return </button>
             </div>}
             {(insert || search) && <div>
