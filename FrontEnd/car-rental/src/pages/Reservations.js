@@ -4,24 +4,37 @@ import { useState } from 'react';
 import BlogList from '../Components/BlogList';
 import axios from 'axios';
 
+
 function Reservations() {
     const [search, setSearch] = useState(false);
     const [status, setStatus] = useState(null);
-
     const [license, setLicense] = useState(null);
     const [username, setUsername] = useState(null);
     const [startDate, setStartDate] = useState(null);
     const [reservationStatus, setReservationStatus] = useState(null);
-    const [paymentStatus, setPaymentStatus] = useState(null);
-    const [reservations, setReservations] = useState(null);
+    const [paymentStatus, setPaymentStatus] = useState("All");
+    const [reservations, setReservations] = useState("All");
+    const[Model,setModel] = useState(null);
+    const[year,setYear] = useState(null);
+    const[color,setColor] = useState(null) ;
+    const[manufacturer,setManufacturer] = useState(null);
+    const[EndDate,setEndDate] = useState(null) ;
     const Search = () => {
         setSearch(true);
     }
     const Submit = async (e) => {
-        if (search) {
+        // if (search) {
+            // var str = new Date(startDate).toISOString + '';
+            // var dateString = str.split("T")[0];
+            // console.log(dateString);
             setSearch(false);
+            console.log(license);
+            console.log(startDate);
+            console.log(reservationStatus);
+            console.log(paymentStatus);
+            console.log(username);
             e.preventDefault();
-            let response = await axios.get('', {
+             let response = await axios.get('http://localhost:8080/api/v1/reservations/details',{
                 params: {
                     license,
                     username,
@@ -29,22 +42,28 @@ function Reservations() {
                     reservationStatus,
                     paymentStatus
                 }
-            }); //TODO
+            }); 
             let data = response.data;
-            setLicense(null);
-            setUsername(null);
-            setStartDate(null);
-            setReservationStatus(null);
-            setPaymentStatus(null);
+            console.log(data);
             setReservations(data);
             setStatus(true);
-        }
+
     }
     const handleDelete = () => {
     }
     const Return = () => {
+        setSearch(true);
+        setLicense(null);
+        setUsername(null);
+        setStartDate(null);
+        setReservationStatus("All");
+        setPaymentStatus("All");
+        setModel(null);
+        setYear(null) ;
+        setColor(null) ;
+        setEndDate(null) ;
+        setColor(null) ;
         setStatus(false);
-        setSearch(false);
     }
     return (
         <div className='Reservations'>
@@ -52,10 +71,6 @@ function Reservations() {
             <div className='paddedButtons2'>
                 <button className="button" onClick={Search} >Search</button>
             </div>
-            {status && <div>
-                <BlogList blogs={reservations} title="All Blogs" handleDelete={handleDelete} />
-                <button className='button' onClick={Return}> return </button>
-            </div>}
             {search && <div>
                 <div className="form-group">
                     <label>License</label>
@@ -67,31 +82,66 @@ function Reservations() {
                 </div>
                 <div className="form-group">
                     <label>Start Date</label>
-                    <input type="text" className="form-control" required placeholder="Start Date" onChange={e => setStartDate(e.target.value)} />
+                    <input type="date" className="form-control" id = "bdate"  required placeholder="Start Date" onChange={e => setStartDate(e.target.value)} />
                 </div>
-
-
 
 
                 {search && <div className="form-group">
                     <label>Reservation Status</label>
-                    <select id="reservationStatus">
+                    <select id="reservationStatus" onChange={e=>{setReservationStatus(e.target.value)}}>
                         <option name="All">All</option>
+                        <option name="Incoming">Incoming</option>
                         <option name="Picked Up">Picked Up</option>
-                        <option name="Not Picked Up">Not Picked Up</option>
                     </select>
                     <label>Payment Status</label>
-                    <select id="payementStatus">
+                    <select id="payementStatus" onChange={e => {setPaymentStatus(e.target.value)}}>
                         <option name="All"> All</option>
                         <option name="Paid">Paid</option>
                         <option name="Not Paid">Not Paid</option>
                     </select>
-
-                </div>}
-                <div>
-                    <button className="button" >Submit</button>
+                    <div>
+                    <button className="button" onClick = {Submit} >Submit</button>
                 </div>
             </div>}
+                </div>}
+                {status && <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>manufacturer</th>
+                            <th>model</th>
+                            <th>year</th>
+                            <th>color</th>
+                            <th>License</th>
+                            <th>price per day</th>
+                            <th>start_date</th>
+                            <th>end_date</th>
+                            <th>reservationStatus</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            reservations.map((reservation) => (
+                                <tr key={reservation.License + reservation.username + reservation.start_date + reservation.end_date}>
+                                    <td>{reservation.name}</td>
+                                    <td>{reservation.manufacturer}</td>
+                                    <td>{reservation.model}</td>
+                                    <td>{reservation.year}</td>
+                                    <td>{reservation.color}</td>
+                                    <td>{reservation.License}</td>
+                                    <td>{reservation.start_date}</td>
+                                    <td>{reservation.end_date}</td>
+                                    <td>{reservation.reservation_status}</td>
+                                </tr>
+                            ))
+                        }
+                    </tbody>
+                </table>
+                <button className='button' onClick={Return}> return </button>
+            </div>}
+              
         </div>
 
     );

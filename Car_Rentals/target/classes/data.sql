@@ -10,3 +10,4 @@ insert ignore into reservations values("dya456","nawar6587","2022-01-05","2022-0
 insert ignore into reservations values("abc124","sengbeng781","2022-01-20","2022-01-27","incoming",1000,"not paid");
 insert ignore into reservations values("way891","ketch555","2022-01-01","2022-01-09","picked up",4500,"paid");
 insert ignore into reservations values("unt093","ramadona9091","2022-01-10","2022-01-30","picked up",30000,"paid");
+insert ignore into reservations values("abc124","sengbeng781","2022-02-02","2022-02-09","incoming",4000,"not paid") ;
