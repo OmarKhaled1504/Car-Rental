@@ -30,7 +30,6 @@ public class reservationsService {
 
     public void addNewReservation(reservations reservations) {
         this.reservationsRepository.insert(reservations.getLicense(), reservations.getUsername(), reservations.getStart_date(), reservations.getEnd_date(), reservations.getReservation_status(), reservations.getPayment(), reservations.getPayment_status());
-        ;
     }
 
     public List<Map<String, Object>> getAllDetails(String license,String userName,String startDate,String reservationStatus, String paymentStatus) {
@@ -75,6 +74,21 @@ public class reservationsService {
 
         return this.reservationsRepository.getAllDetails(licenses,usernames,date,reservations,payments);
     }
+
+    public List<Map<String, Object>> getUserReservations(String username) {
+        return this.reservationsRepository.getUserReservation(username);
+    }
+
+
+    public void modify(String license,String username , String startDate , String endDate) {
+        this.reservationsRepository.modify(username,license,startDate,endDate);
+    }
+
+    public List<Map<String, Object>> getReports(String startDate , String endDate) {
+        return this.reservationsRepository.getReports(startDate , endDate);
+    }
+
+
 //    public List<Map<String, Object>> getAllDetails() {
 //        return this.reservationsRepository.getAllDetails();
 //    }

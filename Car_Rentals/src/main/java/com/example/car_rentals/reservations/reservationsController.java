@@ -47,6 +47,16 @@ public class reservationsController {
         return this.reservationsService.getAllDetails(license,username,startDate,reservationStatus,paymentStatus);
     }
 
+    @GetMapping("/userReservations")
+    public  List<Map<String,Object>> getUserReservations(@RequestParam String username){
+        return this.reservationsService.getUserReservations(username);
+    }
+
+    @GetMapping("/modify")
+    public void modify(@RequestParam String license,@RequestParam String username ,@RequestParam String startDate ,@RequestParam String endDate) {
+        this.reservationsService.modify(license,username,startDate,endDate);
+    }
+
 }
 //    @GetMapping("/details")
 //    public  List<Map<String,Object>> getAllDetails(@RequestParam (defaultValue = "null") String License,@RequestParam(defaultValue = "null") String username,@RequestParam(defaultValue = "null") String name,

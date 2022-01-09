@@ -14,55 +14,55 @@ function Reservations() {
     const [reservationStatus, setReservationStatus] = useState("All");
     const [paymentStatus, setPaymentStatus] = useState("All");
     const [reservations, setReservations] = useState(null);
-    const [Model, setModel] = useState(null);
-    const [year, setYear] = useState(null);
-    const [color, setColor] = useState(null);
-    const [manufacturer, setManufacturer] = useState(null);
-    const [EndDate, setEndDate] = useState(null);
+    const[Model,setModel] = useState(null);
+    const[year,setYear] = useState(null);
+    const[color,setColor] = useState(null) ;
+    const[manufacturer,setManufacturer] = useState(null);
+    const[EndDate,setEndDate] = useState(null) ;
     const Search = () => {
         setSearch(true);
     }
     const Submit = async (e) => {
         // if (search) {
-        // var str = new Date(startDate).toISOString + '';
-        // var dateString = str.split("T")[0];
-        // console.log(dateString);
-        setSearch(false);
-        console.log(license);
-        console.log(startDate);
-        console.log(username);
-        console.log(reservationStatus);
-        console.log(paymentStatus);
-        e.preventDefault();
-        let response = await axios.get('http://localhost:8080/api/v1/reservations/details', {
-            params: {
-                license,
-                username,
-                startDate,
-                reservationStatus,
-                paymentStatus
-            }
-        });
-        let data = response.data;
-        console.log(data);
-        setReservations(data);
-        setStatus(true);
+            // var str = new Date(startDate).toISOString + '';
+            // var dateString = str.split("T")[0];
+            // console.log(dateString);
+            setSearch(false);
+            console.log(license);
+            console.log(startDate);
+            console.log(username);
+            console.log(reservationStatus);
+            console.log(paymentStatus);
+            e.preventDefault();
+             let response = await axios.get('http://localhost:8080/api/v1/reservations/details',{
+                params: {
+                    license,
+                    username,
+                    startDate,
+                    reservationStatus,
+                    paymentStatus
+                }
+            }); 
+            let data = response.data;
+            console.log(data);
+            setReservations(data);
+            setStatus(true);
 
     }
     const handleDelete = () => {
     }
     const Return = () => {
-        setSearch(true);
+        setSearch(false);
         setLicense(null);
         setUsername(null);
         setStartDate(null);
         setReservationStatus("All");
         setPaymentStatus("All");
         setModel(null);
-        setYear(null);
-        setColor(null);
-        setEndDate(null);
-        setColor(null);
+        setYear(null) ;
+        setColor(null) ;
+        setEndDate(null) ;
+        setColor(null) ;
         setStatus(false);
     }
     return (
@@ -71,8 +71,7 @@ function Reservations() {
             <div className='paddedButtons2'>
                 <button className="button" onClick={Search} >Search</button>
             </div>
-        {search && <div>
-            <div>
+            {search && <div>
                 <div className="form-group">
                     <label>License</label>
                     <input type="text" className="form-control" required placeholder="License" onChange={e => setLicense(e.target.value)} />
@@ -83,30 +82,29 @@ function Reservations() {
                 </div>
                 <div className="form-group">
                     <label>Start Date</label>
-                    <input type="date" className="form-control" id="bdate" required placeholder="Start Date" onChange={e => setStartDate(e.target.value)} />
+                    <input type="date" className="form-control" id = "bdate"  required placeholder="Start Date" onChange={e => setStartDate(e.target.value)} />
                 </div>
 
 
-             <div className="form-group">
+                {search && <div className="form-group">
                     <label>Reservation Status</label>
-                    <select id="reservationStatus" onChange={e => { setReservationStatus(e.target.value) }}>
+                    <select id="reservationStatus" onChange={e=>{setReservationStatus(e.target.value)}}>
                         <option name="All">All</option>
                         <option name="Incoming">Incoming</option>
                         <option name="Picked Up">Picked Up</option>
                     </select>
                     <label>Payment Status</label>
-                    <select id="payementStatus" onChange={e => { setPaymentStatus(e.target.value) }}>
+                    <select id="payementStatus" onChange={e => {setPaymentStatus(e.target.value)}}>
                         <option name="All"> All</option>
                         <option name="Paid">Paid</option>
                         <option name="Not Paid">Not Paid</option>
                     </select>
                     <div>
-                        <button className="button" onClick={Submit} >Submit</button>
-                    </div>
+                    <button className="button" onClick = {Submit} >Submit</button>
                 </div>
-            </div>
-         </div> }
-            {status && <div>
+            </div>}
+                </div>}
+                {status && <div>
                 <table>
                     <thead>
                         <tr>
@@ -118,8 +116,8 @@ function Reservations() {
                             <th>License</th>
                             <th>start_date</th>
                             <th>end_date</th>
+                            <th>Total payment</th>
                             <th>reservationStatus</th>
-                            <th>Payment</th>
 
                         </tr>
                     </thead>
@@ -135,8 +133,8 @@ function Reservations() {
                                     <td>{reservation.License}</td>
                                     <td>{reservation.start_date}</td>
                                     <td>{reservation.end_date}</td>
-                                    <td>{reservation.reservation_status}</td>
                                     <td>{reservation.payment}</td>
+                                    <td>{reservation.reservation_status}</td>
                                 </tr>
                             ))
                         }
@@ -144,7 +142,7 @@ function Reservations() {
                 </table>
                 <button className='button' onClick={Return}> return </button>
             </div>}
-
+              
         </div>
 
     );

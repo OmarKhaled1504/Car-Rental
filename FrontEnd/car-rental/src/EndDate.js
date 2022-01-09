@@ -12,7 +12,6 @@ export default function EndDate() {
 
   useEffect(() => {
       sessionStorage.setItem("endDate",value);
-      console.log("End date class"+value);
     }, [value])
   return (
     <div className='container6'>

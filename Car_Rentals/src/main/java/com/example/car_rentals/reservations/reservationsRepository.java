@@ -67,7 +67,41 @@ public interface reservationsRepository extends JpaRepository<reservations, comp
     String getDate() ;
 
 
-//    List<reservations> reservations_filter (@Param("username") List<String> usernames, @Param("license") List<String> licenses,@Param("start_date") List<LocalDate> dates,@Param("payment") List<Integer> payments) ;
-  //  List<reservations> reservations_filter (@Param("username") List<String> usernames, @Param("license") List<String> licenses,@Param("start_date") List<LocalDate> dates,@Param("payment") List<Integer> payments) ;
+
+    @Query(
+            value = "SELECT reservations.License, reservations.username, reservations.start_date" +
+                    ", reservations.end_date, reservations.reservation_status, reservations.payment, " +
+                    "customer.email, customer.name, car.color," +
+                    "car.manufacturer, car.model, car.year,car.car_type" +
+                    " FROM `reservations` " +
+                    "JOIN customer " +
+                    "ON customer.username=reservations.username " +
+                    "JOIN car " +
+                    "On car.License= reservations.License where reservations.username = :username ",
+            nativeQuery = true
+    )
+    List<Map<String, Object>> getUserReservation (@Param("username") String username);
+
+
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE reservations SET payment_status = 'Paid' WHERE License = :license and username = :username and start_date = :start_date and end_date = :end_date",
+            nativeQuery = true)
+    void modify (@Param("username") String username,@Param("license") String license,@Param("start_date") String start_date,@Param("end_date") String end_date);
+
+    @Query(
+            value = "SELECT reservations.License, reservations.username, reservations.start_date" +
+                    ", reservations.end_date, reservations.reservation_status, reservations.payment, " +
+                    "customer.email, customer.name, car.color," +
+                    "car.manufacturer, car.model, car.year, " +
+                    "car.price_per_day" +
+                    " FROM `reservations` " +
+                    "JOIN customer " +
+                    "ON customer.username=reservations.username " +
+                    "JOIN car " +
+                    "On car.License= reservations.License where " +
+                    "((reservations.License in :Licenses) and (reservations.username in :usernames) and (reservations.start_date >= :start_date) and (reservations.reservation_status in :reservations) and (reservations.payment_status in :payments))",
+            nativeQuery = true)
+    List<Map<String, Object>> getReports(@Param("start_date") String start_date, @Param("end_date")  String end_date);
 
 }
