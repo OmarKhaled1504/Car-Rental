@@ -47,4 +47,11 @@ public interface customerRepository extends JpaRepository<customer,String>{
     )
     List<customer> filter (@Param("name") List<String> name,@Param("username") List<String> username);
 
+
+    @Query(
+            value = "SELECT customer.username from customer where email = :email ",
+            nativeQuery = true
+    )
+    String getUserName (@Param("email") String email);
+
 }

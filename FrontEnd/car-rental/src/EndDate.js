@@ -4,11 +4,16 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
 import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
+import { useEffect } from 'react';
 
 
 export default function EndDate() {
   const [value, setValue] = React.useState(new Date());
 
+  useEffect(() => {
+      sessionStorage.setItem("endDate",value);
+      console.log("End date class"+value);
+    }, [value])
   return (
     <div className='container6'>
        <LocalizationProvider dateAdapter={AdapterDateFns}>

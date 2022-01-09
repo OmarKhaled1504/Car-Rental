@@ -4,9 +4,13 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { useEffect } from 'react';
 
 export default function PriceSelect() {
   const [price, setprice] = React.useState('');
+  useEffect(() => {
+    sessionStorage.setItem("price",price);
+  }, [price])
 
   const handleChange = (event) => {
     setprice(event.target.value);

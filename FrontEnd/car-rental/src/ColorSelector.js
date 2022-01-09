@@ -8,6 +8,7 @@ import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 import { red } from '@mui/material/colors';
 import { borderLeft } from '@mui/system';
+import { useEffect } from 'react';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -30,6 +31,9 @@ const colors = [
 
 export default function ColorSelector() {
   const [colorChoose, setcolorChoose] = React.useState([]);
+  useEffect(() => {
+    sessionStorage.setItem("color",colorChoose);
+  }, [colorChoose])
 
   const handleChange = (event) => {
     const {

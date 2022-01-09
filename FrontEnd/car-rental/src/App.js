@@ -45,7 +45,6 @@ const NavRouterProfile = ({exact, path, component: Component}) => (
         <RegionSelect/>
         <StartDate/>
         <EndDate/>
-
         <Component {...props}/>
       </div>
     </div>)}/>

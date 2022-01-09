@@ -8,7 +8,7 @@ import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 import { red } from '@mui/material/colors';
 import { borderLeft } from '@mui/system';
-
+import { useEffect } from 'react';
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -28,6 +28,9 @@ const regions = [
 
 export default function RegionSelect() {
   const [regionChoose, setregionChoose] = React.useState([]);
+  useEffect(() => {
+    sessionStorage.setItem("region",regionChoose);
+  }, [regionChoose])
 
   const handleChange = (event) => {
     const {

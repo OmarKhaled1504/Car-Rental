@@ -39,4 +39,8 @@ public class customerService {
         }
         return this.customerRepository.filter(names,usernames);
     }
+
+    public String getUserName (String email){
+        return this.customerRepository.getUserName(email);
+    }
 }

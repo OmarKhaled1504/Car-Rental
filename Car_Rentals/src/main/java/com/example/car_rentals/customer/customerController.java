@@ -47,6 +47,13 @@ public class customerController {
         System.out.println("received request from " + name + " " + username + " answer :" + result);
         return result;
     }
+    @GetMapping("/userName")
+    public String getUserName(@RequestParam String email) {
+        String result = this.customerService.getUserName(email);
+        System.out.println(result);
+        return result;
+    }
+
 
 }
 

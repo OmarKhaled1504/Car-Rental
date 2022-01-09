@@ -26,7 +26,12 @@ const Login = () => {
                 }})
             let data = await response.data
             if (data) {
-                history.push('/user')
+                let response1 = await axios.get('http://localhost:8080/api/v1/customer/userName', { params: {
+                    email,
+                }})
+                let data1 = await response1.data
+                sessionStorage.setItem("username",data1);
+                history.push('/user');
             }else {
                 alert("Invalid email or password")
             }
