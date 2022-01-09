@@ -2,6 +2,11 @@ import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from 'axios';
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 const Login = () => {
     const history = useHistory();
     const [email, setEmail] = useState('');
@@ -46,16 +51,16 @@ const Login = () => {
 
 
   return (  
+   
     <div className="Login">
+         <Stack spacing={6} direction="column">
         <div className="auth-inner">
         <form >
             <div className="form-group">
-                <label>Email</label>
-                <input type="email" className="form-control" id="email" required onChange={e => setEmail(e.target.value)}/>
+                <TextField  type="email" className="form-control" id="email" label="Email" variant="standard"  required onChange={e => setEmail(e.target.value)}/>
             </div>
             <div className="form-group"> 
-                <label>Password</label>
-                <input type="password" className="form-control" id="psw" required onChange={e => setPassword(e.target.value)}></input>
+                <TextField type="password" className="form-control" id="psw" label="Password" variant="standard"  required onChange={e => setPassword(e.target.value)}/>
             </div>
             <div>
                 <div className="form-group">
@@ -68,11 +73,13 @@ const Login = () => {
             </div>
             <div>
                 <label>Don't have an account?</label>
-                <button className="button" onClick={signUp} >SignUp</button>
+                <Button variant="text" className="button" onClick={signUp} >SignUp</Button>
             </div>
         </form>
    </div>
+   </Stack>
  </div>
+ 
 )
 }
 export default Login;

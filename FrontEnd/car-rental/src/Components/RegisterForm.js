@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import axios from 'axios';
+
  const  SignUp = ()=> {
     const [username, setUserName] = useState('');
     const [name, setName] = useState('');
