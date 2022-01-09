@@ -30,10 +30,10 @@ public class reservationsController {
         System.out.println(reservations);
         this.reservationsService.addNewReservation(reservations);
     }
-
-    @GetMapping("/details")
-    public  List<Map<String,Object>> getAllDetails(@RequestParam (defaultValue = "null") String License,@RequestParam(defaultValue = "null") String username,@RequestParam(defaultValue = "null") String name,
-                                                   @RequestParam(defaultValue = "null") String manufacturer,@RequestParam(defaultValue = "null") String model,@RequestParam(defaultValue = "0") String payment){
-        return this.reservationsService.getAllDetails();
-    }
 }
+//    @GetMapping("/details")
+//    public  List<Map<String,Object>> getAllDetails(@RequestParam (defaultValue = "null") String License,@RequestParam(defaultValue = "null") String username,@RequestParam(defaultValue = "null") String name,
+//                                                   @RequestParam(defaultValue = "null") String manufacturer,@RequestParam(defaultValue = "null") String model,@RequestParam(defaultValue = "0") String payment){
+//        return this.reservationsService.getAllDetails();
+//    }
+//}

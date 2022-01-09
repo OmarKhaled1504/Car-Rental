@@ -24,7 +24,7 @@ public interface CarRepository extends JpaRepository<Car, String> {
     List<Car> getAll();
 
     @Transactional
-    @Query(value = "Select * from car where car.status = 'available'",
+    @Query(value = "Select * from car where car.car_status = 'available'",
             nativeQuery = true)
     List<Car> getActive();
 
@@ -90,7 +90,7 @@ public interface CarRepository extends JpaRepository<Car, String> {
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE car SET status = :status WHERE License = :License",
+    @Query(value = "UPDATE car SET car_status = :status WHERE License = :License",
             nativeQuery = true)
     void modify(@Param("License") String License, @Param("status") String status);
 
