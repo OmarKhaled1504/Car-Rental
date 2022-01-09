@@ -11,9 +11,9 @@ function Reservations() {
     const [license, setLicense] = useState(null);
     const [username, setUsername] = useState(null);
     const [startDate, setStartDate] = useState(null);
-    const [reservationStatus, setReservationStatus] = useState(null);
+    const [reservationStatus, setReservationStatus] = useState("All");
     const [paymentStatus, setPaymentStatus] = useState("All");
-    const [reservations, setReservations] = useState("All");
+    const [reservations, setReservations] = useState(null);
     const[Model,setModel] = useState(null);
     const[year,setYear] = useState(null);
     const[color,setColor] = useState(null) ;
@@ -30,9 +30,9 @@ function Reservations() {
             setSearch(false);
             console.log(license);
             console.log(startDate);
+            console.log(username);
             console.log(reservationStatus);
             console.log(paymentStatus);
-            console.log(username);
             e.preventDefault();
              let response = await axios.get('http://localhost:8080/api/v1/reservations/details',{
                 params: {
