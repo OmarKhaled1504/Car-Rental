@@ -3,6 +3,7 @@ package com.example.car_rentals.car;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -17,6 +18,17 @@ public class CarController {
     @Autowired
     public CarController(CarService carService) {
         this.carService = carService;
+    }
+
+    @GetMapping("/filterUser")
+    public List<Car> filterUser(@RequestParam List<String> color, @RequestParam  List<String> region,
+                                @RequestParam List<String> type, @RequestParam String startDate,
+                                @RequestParam String endDate, @RequestParam(defaultValue = "0") String price) {
+        System.out.println(color.isEmpty());
+        System.out.println(region.isEmpty());
+        System.out.println(price);
+        int pricee = Integer.parseInt(price);
+        return this.carService.getUserCars(color,region,type,startDate,endDate,pricee);
     }
 
     @GetMapping("/filter")

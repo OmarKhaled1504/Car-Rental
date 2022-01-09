@@ -42,14 +42,7 @@ function Cars() {
                 }
             });
             let data = response.data;
-            setLicense(null);
-            setColor(null);
-            setManufacturer(null);
-            setModel(null);
-            setOffice(null);
-            setprice_day(null);
-            setYear(null);
-            setType(null);
+            console.log(data)
             setCars(data);
             setStatus(true);
         } else if (insert) {
@@ -62,7 +55,7 @@ function Cars() {
                 "year": x,
                 "region": Office,
                 "price_per_day": y,
-                "status": "Available",
+                "car_status": "Available",
                 "car_type": carType,
                 "image": photoLink
 
@@ -116,6 +109,16 @@ function Cars() {
         setModify(false);
         setInsert(false);
         setSearch(false);
+        setLicense(null);
+        setColor(null);
+        setManufacturer(null);
+        setModel(null);
+        setOffice(null);
+        setType(null);
+        setPhotoLink(null);
+        setprice_day(null);
+        setYear(null);
+        setType(null);
     }
     return (
         <div className='Cars'>
@@ -129,12 +132,11 @@ function Cars() {
                 <table>
                     <thead>
                         <tr>
-                            <th>car type</th>
                             <th>manufacturer</th>
                             <th>model</th>
-                            <th>region</th>
+                            <th>Region</th>
+                            <th>Car Type</th>
                             <th>license</th>
-                            <th>price per day</th>
                             <th>Status</th>
 
                 </tr>
