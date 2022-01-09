@@ -24,6 +24,7 @@ import PriceSelect from './PriceSelect';
 import RegionSelect from './RegionSelect';
 import StartDate from './StartDate';
 import EndDate from './EndDate';
+import Reserve from './Reserve';
 
 const NavRoute = ({exact, path, component: Component}) => (
   <Route exact={exact} path={path} render={(props) => (
@@ -65,6 +66,7 @@ function App() {
             <Route exact path='/' component={Login} />
             <Route path="/SignIn" exact component={Login} />
             <Route path="/SignUp" exact component={SignUp} />
+            <Route path="/Reserve" exact component={Reserve} />
             <NavRoute path="/admin" exact component={admin} />
             <NavRoute path="/admin/Cars" exact component={Cars}/>
             <NavRoute path="/admin/Customers" exact component={Customers} />

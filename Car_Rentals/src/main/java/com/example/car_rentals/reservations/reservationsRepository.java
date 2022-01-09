@@ -99,8 +99,7 @@ public interface reservationsRepository extends JpaRepository<reservations, comp
                     "JOIN customer " +
                     "ON customer.username=reservations.username " +
                     "JOIN car " +
-                    "On car.License= reservations.License where " +
-                    "((reservations.License in :Licenses) and (reservations.username in :usernames) and (reservations.start_date >= :start_date) and (reservations.reservation_status in :reservations) and (reservations.payment_status in :payments))",
+                    "On car.License= reservations.License",
             nativeQuery = true)
     List<Map<String, Object>> getReports(@Param("start_date") String start_date, @Param("end_date")  String end_date);
 
