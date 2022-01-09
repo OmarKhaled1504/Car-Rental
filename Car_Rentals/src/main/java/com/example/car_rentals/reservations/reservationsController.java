@@ -56,6 +56,10 @@ public class reservationsController {
     public void modify(@RequestParam String license,@RequestParam String username ,@RequestParam String startDate ,@RequestParam String endDate) {
         this.reservationsService.modify(license,username,startDate,endDate);
     }
+    @GetMapping("/getReports")
+    public List<Map<String, Object>> getReports(@RequestParam(defaultValue = "null") String startDate,@RequestParam(defaultValue = "null") String endDate){
+        return this.reservationsService.getReports(startDate,endDate) ;
+    }
 
 }
 //    @GetMapping("/details")

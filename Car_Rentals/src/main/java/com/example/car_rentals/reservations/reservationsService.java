@@ -6,22 +6,27 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Service
-
-
-
+@Component
+@EnableScheduling
 public class reservationsService {
     private final reservationsRepository reservationsRepository;
 
     @Autowired
-
-
     public reservationsService(reservationsRepository reservationsRepository ) {
         this.reservationsRepository = reservationsRepository;
 
 
+    }
+
+    @Scheduled(fixedDelay = 30000)
+    public void updateReservation(){
+        this.reservationsRepository.update((java.time.LocalDate.now()).toString());
     }
 
     public List<reservations> getReservations() {
@@ -85,7 +90,20 @@ public class reservationsService {
     }
 
     public List<Map<String, Object>> getReports(String startDate , String endDate) {
-        return this.reservationsRepository.getReports(startDate , endDate);
+        String start_Date;
+        String end_Date;
+        if (startDate.equals("null")){
+             start_Date = this.reservationsRepository.getDate();
+        }else {
+            start_Date = startDate;
+        }
+        if (endDate.equals("null")){
+            end_Date = this.reservationsRepository.getMax() ;
+        }
+        else{
+            end_Date = endDate ;
+        }
+        return this.reservationsRepository.getReports(start_Date , end_Date);
     }
 
 
