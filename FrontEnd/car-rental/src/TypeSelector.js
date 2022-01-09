@@ -42,7 +42,7 @@ export default function TypeSelector() {
   };
 
   return (
-    <div>
+    <div className='container4'>
       <FormControl sx={{ m: 2, width: 300 }}>
         <InputLabel id="demo-multiple-checkbox-label">Type</InputLabel>
         <Select

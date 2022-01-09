@@ -20,45 +20,43 @@ const MenuProps = {
   },
 };
 
-const colors = [
-  'Red',
-  'Blue',
-  'Black',
-  'Silver',
+const regions = [
+  'Cairo',
+  'Alexandria',
   
 ];
 
-export default function ColorSelector() {
-  const [colorChoose, setcolorChoose] = React.useState([]);
+export default function RegionSelect() {
+  const [regionChoose, setregionChoose] = React.useState([]);
 
   const handleChange = (event) => {
     const {
       target: { value },
     } = event;
-    setcolorChoose(
+    setregionChoose(
       // On autofill we get a stringified value.
       typeof value === 'string' ? value.split(',') : value,
     );
   };
 
   return (
-    <div className='container2'>
+    <div className='container3'>
       <FormControl sx={{ m: 2, width: 300 }}>
-        <InputLabel id="demo-multiple-checkbox-label">Color</InputLabel>
+        <InputLabel id="demo-multiple-checkbox-label">Region</InputLabel>
         <Select
           labelId="demo-multiple-checkbox-label"
           id="demo-multiple-checkbox"
           multiple
-          value={colorChoose}
+          value={regionChoose}
           onChange={handleChange}
           input={<OutlinedInput label="Color" />}
           renderValue={(selected) => selected.join(', ')}
           MenuProps={MenuProps}
         >
-          {colors.map((color) => (
-            <MenuItem key={color} value={color}>
-              <Checkbox checked={colorChoose.indexOf(color) > -1} />
-              <ListItemText primary={color} />
+          {regions.map((region) => (
+            <MenuItem key={region} value={region}>
+              <Checkbox checked={regionChoose.indexOf(region) > -1} />
+              <ListItemText primary={region} />
             </MenuItem>
           ))}
         </Select>

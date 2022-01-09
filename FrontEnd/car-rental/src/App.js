@@ -20,6 +20,10 @@ import Home from './Home';
 import ColorSelector from './ColorSelector';
 import TypeSelector from './TypeSelector';
 import ResHistory from './ResHistory'
+import PriceSelect from './PriceSelect';
+import RegionSelect from './RegionSelect';
+import StartDate from './StartDate';
+import EndDate from './EndDate';
 
 const NavRoute = ({exact, path, component: Component}) => (
   <Route exact={exact} path={path} render={(props) => (
@@ -37,6 +41,11 @@ const NavRouterProfile = ({exact, path, component: Component}) => (
       <div>
         <ColorSelector/>
         <TypeSelector/>
+        <PriceSelect/>
+        <RegionSelect/>
+        <StartDate/>
+        <EndDate/>
+
         <Component {...props}/>
       </div>
     </div>)}/>

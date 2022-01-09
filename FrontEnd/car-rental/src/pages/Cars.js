@@ -144,7 +144,7 @@ function Cars() {
                                 <td>{car.model}</td>
                                 <td>{car.region}</td>
                                 <td>{car.car_type}</td>
-                                <td>{car.price_per_day}</td>
+                                <td>{car.license}</td>
                                 <td>{car.car_status}</td> 
                                 <td/>
                             </tr>
