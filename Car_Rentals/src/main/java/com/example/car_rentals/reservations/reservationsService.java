@@ -60,6 +60,9 @@ public class reservationsService {
         }
         return this.reservationsRepository.getAllDetails();
     }
+//    public List<Map<String, Object>> getAllDetails() {
+//        return this.reservationsRepository.getAllDetails();
+//    }
 
 //    public List<reservations> reservation_filter(reservations reservations) {
 //        List<String> usernames = new ArrayList<>();
@@ -88,6 +91,7 @@ public class reservationsService {
 //        }
 //        return null;
 ////    return this.reservationsRepository.reservations_filter(usernames,licenses,dates,payments) ;
+//    return this.reservationsRepository.reservations_filter(usernames,licenses,dates,payments) ;
 //    }
 }
 

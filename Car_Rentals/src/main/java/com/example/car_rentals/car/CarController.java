@@ -23,7 +23,7 @@ public class CarController {
     public List<Car> filter(@RequestParam(defaultValue = "null") String License, @RequestParam (defaultValue = "null") String Color,
                             @RequestParam (defaultValue = "null") String Manufacturer, @RequestParam(defaultValue = "null") String Model,
                             @RequestParam(defaultValue = "0") String year, @RequestParam(defaultValue = "null") String office,
-                            @RequestParam (defaultValue = "0" )String price_day, @RequestParam(defaultValue = "null") String carStatus,
+                            @RequestParam (defaultValue = "0" )String price_day, @RequestParam(defaultValue = "Available") String carStatus,
                             @RequestParam(defaultValue = "null") String carType) {
         Car car = new Car();
         car.setCar_status(carStatus);
