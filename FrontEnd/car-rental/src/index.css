@@ -233,3 +233,20 @@ align-items: center;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
+.container7{
+  margin: 0;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.container8{
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 5;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
