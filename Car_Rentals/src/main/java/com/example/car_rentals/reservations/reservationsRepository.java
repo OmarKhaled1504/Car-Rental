@@ -34,9 +34,10 @@ public interface reservationsRepository extends JpaRepository<reservations, comp
                     "JOIN customer " +
                     "ON customer.username=reservations.username " +
                     "JOIN car " +
-                    "On car.License= reservations.License;",
+                    "On car.License= reservations.License where " +
+                    "((reservations.License in :Licenses) and (reservations.username in :usernames) and (reservations.start_date >= :start_date) and (reservations.reservation_status in :reservations) and (reservations.payment_status in :payments))",
             nativeQuery = true)
-    List<Map<String, Object>> getAllDetails();
+    List<Map<String, Object>> getAllDetails(@Param("Licenses") List<String> Licenses, @Param("usernames") List<String> usernames, @Param("start_date") String start_date, @Param("reservations") List<String> reservations, @Param("payments") List<String> payments);
     @Query(
             value = "SELECT distinct reservations.username from reservations",
             nativeQuery = true
@@ -57,6 +58,11 @@ public interface reservationsRepository extends JpaRepository<reservations, comp
             nativeQuery = true
     )
     List<Integer> getAllPayments ();
+@Query(
+        value = "SELECT min(reservations.start_date) from reservations",
+        nativeQuery = true
+)
+    String getDate() ;
 
 
 //    List<reservations> reservations_filter (@Param("username") List<String> usernames, @Param("license") List<String> licenses,@Param("start_date") List<LocalDate> dates,@Param("payment") List<Integer> payments) ;

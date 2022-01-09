@@ -1,5 +1,6 @@
 package com.example.car_rentals.reservations;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -37,28 +38,42 @@ public class reservationsService {
         List<String> licenses = new ArrayList<>();
         String date ;
         List<String> payments = new ArrayList<>();
+        List<String> reservations = new ArrayList<>();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/mm/dd");
         if (userName.equals("null")) {
             usernames = this.reservationsRepository.getAllUsers();
         } else {
             usernames.add(userName);
         }
+
         if (license.equals("null")) {
             licenses = this.reservationsRepository.getAllLicenses();
         } else {
             licenses.add(license);
         }
+
         if (startDate.equals("null")) {
-           // date = this.reservationsRepository.getAllDates();
+            date = this.reservationsRepository.getDate();
         } else {
+           // date = LocalDate.parse(startDate, formatter);
             date = startDate;
         }
+
         if (paymentStatus.equals("All")) {
                 payments.add("Paid");
                 payments.add("Not Paid");
         } else {
             payments.add(paymentStatus);
         }
-        return this.reservationsRepository.getAllDetails();
+
+        if (reservationStatus.equals("All")) {
+            reservations.add("Incoming");
+            reservations.add("Picked Up");
+        } else {
+            reservations.add(reservationStatus);
+        }
+
+        return this.reservationsRepository.getAllDetails(licenses,usernames,date,reservations,payments);
     }
 //    public List<Map<String, Object>> getAllDetails() {
 //        return this.reservationsRepository.getAllDetails();
