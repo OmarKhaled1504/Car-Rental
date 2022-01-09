@@ -4,10 +4,10 @@ import { useState } from 'react';
 import BlogList from '../Components/BlogList';
 import axios from 'axios';
 
+
 function Reservations() {
     const [search, setSearch] = useState(false);
     const [status, setStatus] = useState(null);
-
     const [license, setLicense] = useState(null);
     const [username, setUsername] = useState(null);
     const [startDate, setStartDate] = useState(null);
@@ -18,10 +18,13 @@ function Reservations() {
         setSearch(true);
     }
     const Submit = async (e) => {
-        if (search) {
+        // if (search) {
+            var str = new Date(startDate).toISOString + '';
+            var dateString = str.split("T")[0];
+            console.log(dateString);
             setSearch(false);
             e.preventDefault();
-            let response = await axios.get('', {
+             let response = await axios.get('', {
                 params: {
                     license,
                     username,
@@ -38,7 +41,7 @@ function Reservations() {
             setPaymentStatus(null);
             setReservations(data);
             setStatus(true);
-        }
+        
     }
     const handleDelete = () => {
     }
@@ -67,7 +70,7 @@ function Reservations() {
                 </div>
                 <div className="form-group">
                     <label>Start Date</label>
-                    <input type="text" className="form-control" required placeholder="Start Date" onChange={e => setStartDate(e.target.value)} />
+                    <input type="date" className="form-control" id = "bdate"  required placeholder="Start Date" onChange={e => setStartDate(e.target.value)} />
                 </div>
 
 
@@ -89,7 +92,7 @@ function Reservations() {
 
                 </div>}
                 <div>
-                    <button className="button" >Submit</button>
+                    <button className="button" onClick = {Submit} >Submit</button>
                 </div>
             </div>}
         </div>

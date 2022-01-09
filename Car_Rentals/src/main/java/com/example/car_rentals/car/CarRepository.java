@@ -35,9 +35,9 @@ public interface CarRepository extends JpaRepository<Car, String> {
     List<String> getAllManufacturer();
 
     @Query(
-            value = " SELECT * from car where ((car_type in :carTypes) and (color in :colors) and (License in :licenses) and (manufacturer in :manufacturers) and (model in :models) and (region in :regions) and (price_per_day <= :maxPrice) and (year in :year)) ",
+            value = " SELECT * from car where ((car_type in :carTypes) and (color in :colors) and (License in :licenses) and (manufacturer in :manufacturers) and (model in :models) and (region in :regions) and (price_per_day <= :maxPrice) and (year in :year) and (car_status in :status)) ",
             nativeQuery = true)
-    List<Car> filter(@Param("carTypes") List<String> carTypes, @Param("colors") List<String> colors, @Param("licenses") List<String> licenses, @Param("manufacturers") List<String> manufacturers, @Param("models") List<String> models, @Param("regions") List<String> regions, @Param("maxPrice") int maxPrice,@Param("year") List<Integer> year);
+    List<Car> filter(@Param("carTypes") List<String> carTypes, @Param("colors") List<String> colors, @Param("licenses") List<String> licenses, @Param("manufacturers") List<String> manufacturers, @Param("models") List<String> models, @Param("regions") List<String> regions, @Param("maxPrice") int maxPrice,@Param("year") List<Integer> year,@Param("status") List<String> status);
 
     @Query(
             value = "SELECT distinct car.color from car",

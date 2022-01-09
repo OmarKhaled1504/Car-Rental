@@ -23,6 +23,7 @@ public class CarService {
         List<String> models = new ArrayList<>();
         List<String> regions = new ArrayList<>();
         List<Integer> year = new ArrayList<>();
+        List<String> status = new ArrayList<>();
         int maxPrice;
         if (car.getCar_type().equals("null")) {
             carTypes = this.carRepository.getAllTypes();
@@ -72,7 +73,13 @@ public class CarService {
         } else {
             year.add(car.getYear());
         }
-        return this.carRepository.filter(carTypes, colors, licenses, manufacturers, models, regions, maxPrice,year);
+        if (! car.getCar_status().equals("All")) {
+            status.add(car.getCar_status());
+        } else {
+            status.add("Available");
+            status.add("Out of Service");
+        }
+        return this.carRepository.filter(carTypes, colors, licenses, manufacturers, models, regions, maxPrice,year,status);
     }
 
     public void addNewCar(Car car) {

@@ -1,0 +1,12 @@
+insert ignore into car values("abc124","blue","ford","sedan","focus",2009,200,"Available","Cairo","https://ssl.caranddriving.com/f2/images/used/big/fordfocusrs2009.jpg");
+insert ignore into car values("dya456","black","nissan","sedan","sunny",2015,200,"Available","Alex","hhttps://ymimg1.b8cdn.com/resized/car_model/3540/logo/mobile_listing_main_listing_main_01.jpg");
+insert ignore into car values("way891","red","kia","sedan","cerato",2020,500,"Available","alex","https://ymimg1.b8cdn.com/resized/car_model/5318/pictures/4814849/mobile_listing_main_2019_Kia_Cerato__9_.jpg");
+insert ignore into car values("unt093","silver","bmw","sport","x6",2018,4500,"Available","Cairo","https://imgcdn.zigwheels.us/medium/gallery/color/12/125/bmw-x6-color-921298.jpg");
+insert ignore into customer values("nawar6587","nawar@gmail.com","youssef nawar","nawnaw2009");
+insert ignore into customer values("sengbeng781","seng99@gmail.com","zengab","zengbengggggg");
+insert ignore into customer values("ketch555","ketchmandoob@gmail.com","omar khaled","ketchiated");
+insert ignore into customer values("ramadona9091","ramadan2000@gmail.com","ahmed ramadan","ramz874");
+insert ignore into reservations values("dya456","nawar6587","2022-01-05","2022-01-09","picked up",1000,"paid");
+insert ignore into reservations values("abc124","sengbeng781","2022-01-20","2022-01-27","incoming",1000,"not paid");
+insert ignore into reservations values("way891","ketch555","2022-01-01","2022-01-09","picked up",4500,"paid");
+insert ignore into reservations values("unt093","ramadona9091","2022-01-10","2022-01-30","picked up",30000,"paid");

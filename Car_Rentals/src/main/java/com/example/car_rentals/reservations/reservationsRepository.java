@@ -59,6 +59,6 @@ public interface reservationsRepository extends JpaRepository<reservations, comp
     List<Integer> getAllPayments ();
 
 
-    List<reservations> reservations_filter (@Param("username") List<String> usernames, @Param("license") List<String> licenses,@Param("start_date") List<LocalDate> dates,@Param("payment") List<Integer> payments) ;
+//    List<reservations> reservations_filter (@Param("username") List<String> usernames, @Param("license") List<String> licenses,@Param("start_date") List<LocalDate> dates,@Param("payment") List<Integer> payments) ;
 
 }

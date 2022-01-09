@@ -19,6 +19,7 @@ function Cars() {
     const [price_day, setprice_day] = useState(null)
     const [year, setYear] = useState(null)
     const [carType, setType] = useState(null);
+    const [photoLink, setPhotoLink] = useState(null);
 
     const Sumbit = async (e) => {
         var x = parseInt(year)
@@ -62,7 +63,9 @@ function Cars() {
                 "region": Office,
                 "price_per_day": y,
                 "status": "Available",
-                "car_type": carType
+                "car_type": carType,
+                "image": photoLink
+
             }
             console.log(jsonData)
             fetch('http://localhost:8080/api/v1/car/insert', {
@@ -124,34 +127,34 @@ function Cars() {
             </div>
             {status && <div>
                 <table>
-                <thead>
-                <tr>
-                    <th>car type</th>
-                    <th>manufacturer</th>
-                    <th>model</th>
-                    <th>region</th>
-                    <th>license</th>
-                    <th>price per day</th>
-                    <th>Status</th>
+                    <thead>
+                        <tr>
+                            <th>car type</th>
+                            <th>manufacturer</th>
+                            <th>model</th>
+                            <th>region</th>
+                            <th>license</th>
+                            <th>price per day</th>
+                            <th>Status</th>
 
-                </tr>
-                </thead>
-                <tbody>
-                    {
-                        cars.map((car) => (
-                            <tr key={car.license}>
-                                <td>{car.manufacturer}</td>
-                                <td>{car.model}</td>
-                                <td>{car.region}</td>
-                                <td>{car.car_type}</td>
-                                <td>{car.price_per_day}</td>
-                                <td>{car.car_status}</td> 
-                                <td/>
-                            </tr>
-                        ))
-                    }
-                </tbody>
-            </table>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            cars.map((car) => (
+                                <tr key={car.license}>
+                                    <td>{car.manufacturer}</td>
+                                    <td>{car.model}</td>
+                                    <td>{car.region}</td>
+                                    <td>{car.car_type}</td>
+                                    <td>{car.price_per_day}</td>
+                                    <td>{car.car_status}</td>
+                                    <td />
+                                </tr>
+                            ))
+                        }
+                    </tbody>
+                </table>
                 <button className='button' onClick={Return}> return </button>
             </div>}
             {(insert || search) && <div>
@@ -196,6 +199,11 @@ function Cars() {
                     </select>
 
                 </div>}
+                {insert && <div
+                    className="form-group">
+                    <label>Photo Link</label>
+                    <input type="text" className="form-control" required placeholder="Photo Link" onChange={e => setPhotoLink(e.target.value)} />
+                </div>}
                 <div>
                     <button className="button" onClick={Sumbit} >Submit</button>
                 </div>
@@ -209,7 +217,7 @@ function Cars() {
                     <label>Status</label>
                     <select id="carStatus">
                         <option name="Available"> Available</option>
-                        <option name="Out of Serive">Out of Serive</option>
+                        <option name="Out of Service">Out of Service</option>
                     </select>
                     <button className='button' onClick={handleModify}>Submit</button>
                 </div>
