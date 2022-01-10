@@ -66,7 +66,7 @@ const BlogList = ({ cars }) => {
         history.push('/Reserve')
     }
     return (
-        <div className="blog-list">
+        <div className="content">
             {cars.map(car => (
                         <div  className="blog-preview" key={car.license} >
                             <h2> <img className="image" src ={car.image}></img> </h2>

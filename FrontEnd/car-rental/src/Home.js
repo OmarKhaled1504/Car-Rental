@@ -75,7 +75,7 @@ const Home = () =>{
             <div>
                 <Button className='button500' variant="contained" onClick={Search}>Search</Button>
             </div>
-            <div className='container8'>
+            <div className='container9'>
              <div className="blog-list">
                {status &&  <div>
                 <BlogList cars = {cars} title="All Blogs"/>
