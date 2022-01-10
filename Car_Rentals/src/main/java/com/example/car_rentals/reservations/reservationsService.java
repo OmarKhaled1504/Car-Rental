@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Service
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class reservationsService {
     private final reservationsRepository reservationsRepository;
 
