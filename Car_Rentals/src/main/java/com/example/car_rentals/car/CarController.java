@@ -37,18 +37,8 @@ public class CarController {
                             @RequestParam(defaultValue = "0") String year, @RequestParam(defaultValue = "null") String office,
                             @RequestParam (defaultValue = "0" )String price_day, @RequestParam(defaultValue = "Available") String carStatus,
                             @RequestParam(defaultValue = "null") String carType) {
-        Car car = new Car();
-        car.setCar_status(carStatus);
-        car.setCar_type(carType);
-        car.setColor(Color);
-        car.setLicense(License);
-        car.setYear(Integer.parseInt(year));
-        car.setPrice_per_day(Integer.parseInt(price_day));
-        car.setManufacturer(Manufacturer);
-        car.setModel(Model);
-        car.setRegion(office);
-        System.out.println(car.toString());
-        List<Car> result = this.carService.getCars(car);
+
+        List<Car> result = this.carService.getCars(License,Color,Manufacturer,Model,year,office,price_day,carStatus,carType);
         System.out.println(result);
         return result;
     }

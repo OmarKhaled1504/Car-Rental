@@ -15,15 +15,14 @@ function Cars() {
     const [Color, setColor] = useState(null);
     const [Manufacturer, setManufacturer] = useState(null);
     const [Model, setModel] = useState(null);
-    const [Office, setOffice] = useState(null);
+    const [office, setOffice] = useState(null);
     const [price_day, setprice_day] = useState(null)
     const [year, setYear] = useState(null)
     const [carType, setType] = useState(null);
     const [photoLink, setPhotoLink] = useState(null);
 
     const Sumbit = async (e) => {
-        var x = parseInt(year)
-        var y = parseInt(price_day)
+       
         if (search) {
             const carStatus = document.getElementById("carStatus").value;
             setSearch(false);
@@ -34,9 +33,9 @@ function Cars() {
                     Color,
                     Manufacturer,
                     Model,
-                    x,
-                    Office,
-                    y,
+                    year,
+                    office,
+                    price_day,
                     carStatus,
                     carType
                 }
@@ -46,14 +45,15 @@ function Cars() {
             setCars(data);
             setStatus(true);
         } else if (insert) {
-
+            var x = parseInt(year)
+            var y = parseInt(price_day)
             var jsonData = {
                 "license": License,
                 "color": Color,
                 "manufacturer": Manufacturer,
                 "model": Model,
                 "year": x,
-                "region": Office,
+                "region": office,
                 "price_per_day": y,
                 "car_status": "Available",
                 "car_type": carType,
@@ -132,7 +132,7 @@ function Cars() {
                 <button className="button" onClick={Modify} >Modify</button>
             </div>
             {status && <div>
-                <table className='Tablee'>
+                <table className='Table'>
                     <thead>
                         <tr>
                             <th>manufacturer</th>
@@ -186,7 +186,7 @@ function Cars() {
                 </div>
                 <div className="form-group">
                     <label>Year</label>
-                    <input type="text" className="form-control" required placeholder="Model" onChange={e => setYear(e.target.value)} />
+                    <input type="text" className="form-control" required placeholder="Year" onChange={e => setYear(e.target.value)} />
                 </div>
                 <div className="form-group">
                     <label>Office</label>
@@ -201,7 +201,7 @@ function Cars() {
                     <select id="carStatus">
                         <option name="All"> All</option>
                         <option name="Available"> Available</option>
-                        <option name="Out of Serive">Out of Serive</option>
+                        <option name="Out of Service">Out of Service</option>
                     </select>
 
                 </div>}

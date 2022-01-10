@@ -16,71 +16,72 @@ public class CarService {
         this.carRepository = carRepository;
     }
 
-    public List<Car> getCars(Car car) {
+    public List<Car> getCars(String License, String Color,String Manufacturer,String Model,String year,String office,String price_day,String carStatus,String carType) {
         List<String> carTypes = new ArrayList<>();
         List<String> colors = new ArrayList<>();
         List<String> licenses = new ArrayList<>();
         List<String> manufacturers = new ArrayList<>();
         List<String> models = new ArrayList<>();
         List<String> regions = new ArrayList<>();
-        List<Integer> year = new ArrayList<>();
+        String years;
         List<String> status = new ArrayList<>();
         int maxPrice;
-        if (car.getCar_type().equals("null")) {
+        if (carType.equals("null")) {
             carTypes = this.carRepository.getAllTypes();
-            System.out.println(carTypes);
+          //  System.out.println(carTypes);
         } else {
-            carTypes.add(car.getCar_type());
+            carTypes.add(carType);
         }
-        if (car.getColor().equals("null")) {
+        if (Color.equals("null")) {
             colors = this.carRepository.getAllColors();
-            System.out.println(colors);
+          //  System.out.println(colors);
         } else {
-            colors.add(car.getColor());
+            colors.add(Color);
         }
-        if (car.getManufacturer().equals("null")) {
+        if (Manufacturer.equals("null")) {
             manufacturers = this.carRepository.getAllManufacturer();
-            System.out.println(manufacturers);
+         //   System.out.println(manufacturers);
         } else {
-            manufacturers.add(car.getManufacturer());
+            manufacturers.add(Manufacturer);
         }
-        if (car.getLicense().equals("null")) {
+        if (License.equals("null")) {
             licenses = this.carRepository.getAllLicense();
-            System.out.println(licenses);
+         //   System.out.println(licenses);
         } else {
-            licenses.add(car.getLicense());
+            licenses.add(License);
         }
-        if (car.getModel().equals("null")) {
+        if (Model.equals("null")) {
             models = this.carRepository.getAllModel();
-            System.out.println(models);
+          //  System.out.println(models);
         } else {
-            models.add(car.getModel());
+            models.add(Model);
         }
-        if (car.getRegion().equals("null")) {
+        if (office.equals("null")) {
             regions = this.carRepository.getAllRegions();
-            System.out.println(regions);
+          //  System.out.println(regions);
         } else {
-            regions.add(car.getRegion());
+            regions.add(office);
+            System.out.println("fjdnvdlkf"+regions);
         }
-        if (car.getPrice_per_day() == 0) {
+        if (Integer.parseInt(price_day) == 0) {
             maxPrice = this.carRepository.getMaxPrice();
-            System.out.println(maxPrice);
+         //   System.out.println(maxPrice);
         } else {
-            maxPrice = car.getPrice_per_day();
+            maxPrice =Integer.parseInt(price_day) ;
         }
-        if (car.getYear() == 0) {
-            year = this.carRepository.getAllyear();
-            System.out.println(year);
+        if (Integer.parseInt(year) == 0) {
+            years = this.carRepository.getAllyear();
+          //  System.out.println(years);
         } else {
-            year.add(car.getYear());
+            years = year;
         }
-        if (!car.getCar_status().equals("All")) {
-            status.add(car.getCar_status());
+        if (!carStatus.equals("All")) {
+            status.add(carStatus);
         } else {
             status.add("Available");
             status.add("Out of Service");
         }
-        return this.carRepository.filter(carTypes, colors, licenses, manufacturers, models, regions, maxPrice, year, status);
+        return this.carRepository.filter(carTypes, colors, licenses, manufacturers, models, regions, maxPrice, years, status);
     }
 
     public void addNewCar(Car car) {

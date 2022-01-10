@@ -35,9 +35,9 @@ public interface CarRepository extends JpaRepository<Car, String> {
     List<String> getAllManufacturer();
 
     @Query(
-            value = " SELECT * from car where ((car_type in :carTypes) and (color in :colors) and (License in :licenses) and (manufacturer in :manufacturers) and (model in :models) and (region in :regions) and (price_per_day <= :maxPrice) and (year in :year) and (car_status in :status)) ",
+            value = " SELECT * from car where ((car_type in :carTypes) and (color in :colors) and (License in :licenses) and (manufacturer in :manufacturers) and (model in :models) and (region in :regions) and (price_per_day <= :maxPrice) and (year <= :year) and (car_status in :status)) ",
             nativeQuery = true)
-    List<Car> filter(@Param("carTypes") List<String> carTypes, @Param("colors") List<String> colors, @Param("licenses") List<String> licenses, @Param("manufacturers") List<String> manufacturers, @Param("models") List<String> models, @Param("regions") List<String> regions, @Param("maxPrice") int maxPrice, @Param("year") List<Integer> year, @Param("status") List<String> status);
+    List<Car> filter(@Param("carTypes") List<String> carTypes, @Param("colors") List<String> colors, @Param("licenses") List<String> licenses, @Param("manufacturers") List<String> manufacturers, @Param("models") List<String> models, @Param("regions") List<String> regions, @Param("maxPrice") int maxPrice, @Param("year") String year, @Param("status") List<String> status);
 
     @Query(
             value = "select * from car c where c.color in :colors and c.car_type in :carTypes and c.region in :regions and c.price_per_day <= :price and c.car_status = 'Available' and c.License not in (select distinct  reservations.License from  reservations where (reservations.start_date <= :startDate and reservations.end_date >= :startDate) or (reservations.start_date <= :endDate and reservations.end_date >= :endDate) or (reservations.start_date >= :startDate and reservations.end_date <= :endDate))",
@@ -82,10 +82,10 @@ public interface CarRepository extends JpaRepository<Car, String> {
     List<String> getAllLicense();
 
     @Query(
-            value = "SELECT distinct car.year from car",
+            value = "SELECT max( car.year) from car",
             nativeQuery = true
     )
-    List<Integer> getAllyear();
+    String getAllyear();
 
 //    @Query(
 //            value = "SELECT distinct car.price from car",
