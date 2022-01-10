@@ -5,28 +5,41 @@ import { useEffect } from 'react';
 
 
 function Reservations() {
-    const [username, setUsername] = useState(null);
+    // const [username, setUsername] = useState(null);
     const [reservations, setReservations] = useState(null);
     const [status , setStatus] = useState(false)
-     useEffect(async (e) => {
-      setUsername(sessionStorage.getItem('username'));
-      let response = await axios.get('http://localhost:8080/api/v1/reservations/userReservations',{
-         params: {
-          username
-         }
-     }) 
-     let data = response.data;
-     setReservations(data);
-     console.log(data);
-     setStatus(true)
-    }, [])
+    const username = "fivjek"
+   
+    // const View = async()=>{
+    //   let response = await axios.get('http://localhost:8080/api/v1/reservations/userReservations',{
+    //      params: {
+    //       username
+    //      }
+    //  }) 
+    //   let data = response.data;
+    //   setReservations(data);
+    //   console.log(data);
+    //   setStatus(true);
+    // }
+        const View = async()=>{
+           var username = sessionStorage.getItem('username');
+          let response = await axios.get('http://localhost:8080/api/v1/reservations/userReservations',{
+              params: {
+                username
+              }
+          }) 
+            let data = response.data;
+            setReservations(data);
+            console.log(data);
+            setStatus(true);
+        }
 
- 
     return (
         <div className='Reservations'>
             <h1>Reservations</h1>
+            <button className='button' onClick={View}>View</button>
               <div>
-               {status && <table className='Tablee'>
+               {status && <table className='Table'>
                     <thead>
                         <tr>
                             <th>Name</th>

@@ -81,7 +81,7 @@ const BlogList = ({ cars }) => {
                                 sessionStorage.setItem("license",car.license);
                                 sessionStorage.setItem("price",car.price_per_day)
                                 click()
-                            }} className="Rent">Rent</button></div>
+                            }} className="button">Rent</button></div>
                         </div>
 
                     ))
