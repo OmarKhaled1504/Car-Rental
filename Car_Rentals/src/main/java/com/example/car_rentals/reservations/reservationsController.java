@@ -27,7 +27,7 @@ public class reservationsController {
         return this.reservationsService.getReservations();
     }
 
-    @PostMapping
+    @PostMapping("/insert")
     public void addNewReservation(@RequestBody reservations reservations) {
         System.out.println(reservations);
         this.reservationsService.addNewReservation(reservations);

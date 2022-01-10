@@ -6,26 +6,22 @@ import DatePicker from '@mui/lab/DatePicker';
 import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
 import { useEffect } from 'react';
 import { useHistory } from "react-router-dom";
+import Button from '@mui/material/Button';
 
+var Startdate = sessionStorage.getItem('startDate');
+var EndDate = sessionStorage.getItem('endDate');
+const pay = async(e) =>{
+
+
+}
+
+console.log(Startdate);
 export default function Reserve (){
-    const [value, setValue] = React.useState(new Date());
-  
-    useEffect(() => {
-      sessionStorage.setItem("Reserve",value);
-    }, [value])
-    return (
-      <div className='container5'>
-         <LocalizationProvider dateAdapter={AdapterDateFns}>
-       <DesktopDatePicker
-            label="Start Date"
-            value={value}
-            minDate={new Date('2017-01-01')}
-            onChange={(newValue) => {
-              setValue(newValue);
-            }}
-            renderInput={(params) => <TextField {...params} />}
-            />
-          </LocalizationProvider>
-      </div>
+  return(
+  <div className='container10'>
+  <h1>Start Date: {Startdate}</h1>
+  <h1>End Date: {EndDate}</h1>
+  <Button variant="contained" onClick={pay}>Pay</Button>
+  </div>
     );
   }

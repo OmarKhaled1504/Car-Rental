@@ -40,7 +40,7 @@ public interface CarRepository extends JpaRepository<Car, String> {
     List<Car> filter(@Param("carTypes") List<String> carTypes, @Param("colors") List<String> colors, @Param("licenses") List<String> licenses, @Param("manufacturers") List<String> manufacturers, @Param("models") List<String> models, @Param("regions") List<String> regions, @Param("maxPrice") int maxPrice, @Param("year") List<Integer> year, @Param("status") List<String> status);
 
     @Query(
-            value = "select * from car c where c.color in :colors and c.car_type in :carTypes and c.region in :regions and c.price_per_day <= :price and c.License not in (select distinct  reservations.License from  reservations where ( reservations.start_date <= :startDate and reservations.end_date >= :startDate) or (reservations.start_date <= :endDate and reservations.end_date >= :endDate) or (reservations.start_date >= :startDate and reservations.end_date <= :endDate))",
+            value = "select * from car c where c.color in :colors and c.car_type in :carTypes and c.region in :regions and c.price_per_day <= :price and c.License not in (select distinct  reservations.License from  reservations where (reservations.start_date <= :startDate and reservations.end_date >= :startDate) or (reservations.start_date <= :endDate and reservations.end_date >= :endDate) or (reservations.start_date >= :startDate and reservations.end_date <= :endDate))",
             nativeQuery = true)
     List<Car> userFilter(@Param("colors") List<String> colors, @Param("carTypes") List<String> carTypes, @Param("regions") List<String> regions, @Param("startDate") String startDate, @Param("endDate") String endDate, @Param("price") int price);
 
