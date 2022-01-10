@@ -22,7 +22,7 @@ const MenuProps = {
 
 const regions = [
   'Cairo',
-  'Alexandria',
+  'Alex',
   
 ];
 

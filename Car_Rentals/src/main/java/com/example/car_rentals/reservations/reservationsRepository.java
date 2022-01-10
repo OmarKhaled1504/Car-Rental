@@ -99,7 +99,7 @@ public interface reservationsRepository extends JpaRepository<reservations, comp
     List<Map<String, Object>> getReports(@Param("start_date") String start_date, @Param("end_date") String end_date);
 
     @Query(
-            value = "select max(end_date) from reservations",
+            value = "select max(reservations.end_date) from reservations",
             nativeQuery = true
     )
     String getMax();
