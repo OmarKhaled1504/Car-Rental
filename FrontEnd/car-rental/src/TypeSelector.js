@@ -22,9 +22,8 @@ const MenuProps = {
 
 const types = [
   'Suv',
-  'MiniVan',
-  'Combact',
-  'Luxury',
+  'Sedan',
+  'Sport',
 
 ];
 

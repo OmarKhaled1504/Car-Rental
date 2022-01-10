@@ -23,8 +23,6 @@ const Reports =()=> {
     let data = response.data;
     setReports(data);
     console.log(reports)
-    console.log(reports.count)
-    console.log(reports.sum)
     setStatus(false);
     setShow(true);
   }
