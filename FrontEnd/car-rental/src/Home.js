@@ -72,7 +72,9 @@ const Home = () =>{
     }
     return(
         <div className="home">
-            <Button className='button500' variant="contained" onClick={Search}>Search</Button>
+            <div>
+                <Button className='button500' variant="contained" onClick={Search}>Search</Button>
+            </div>
             <div className='container8'>
              <div className="blog-list">
                {status &&  <div>
