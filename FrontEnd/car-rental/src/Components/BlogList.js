@@ -36,9 +36,14 @@ const BlogList = ({ cars }) => {
         var pricePerDay = sessionStorage.getItem('price');
         var date1 = new Date(start);
         var date2 = new Date(end);
-        var diffDays = date2.getDate() - date1.getDate(); 
+        var diffDays = date2.getDate() - date1.getDate() + 1; 
         var payment = pricePerDay * diffDays;
         var license = sessionStorage.getItem('license');
+        sessionStorage.setItem('startDate',start)
+        sessionStorage.setItem('endDate',end)
+        sessionStorage.setItem('amount',payment)
+        sessionStorage.setItem('username',username)
+        sessionStorage.setItem('license',license)
          
         var jsonData = {
             "license": license,

@@ -11,6 +11,7 @@ const Reports =()=> {
 
   const Search = () =>{
     setStatus(true);
+    setShow(false);
   }
   const Submit = async() =>{
     let response = await axios.get('http://localhost:8080/api/v1/reservations/getReports',{
@@ -24,10 +25,8 @@ const Reports =()=> {
     console.log(reports)
     console.log(reports.count)
     console.log(reports.sum)
-
     setStatus(false);
     setShow(true);
-
   }
   return (
     <div className='Reports'>
@@ -44,9 +43,9 @@ const Reports =()=> {
             <label>To</label>
             <input type="date" className="form-control"  required placeholder="To" onChange={e => setEndDate(e.target.value)} />
         </div>
-        <div className='paddedButtons2'>
-                <button className="button" onClick={Submit} >Submit</button>
-        </div>      
+        <div className='buttonContainer'>
+                        <button className="button" onClick={Submit} >Submit</button>
+                    </div>     
       </div>}
       {show &&<div>
         <div className="form-group">

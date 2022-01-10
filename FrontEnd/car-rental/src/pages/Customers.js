@@ -55,7 +55,7 @@ const Customers = ()=> {
             </div>
         </div>}
         {status && customers && <div>
-          <table>
+          <table className='Table'>
                 <thead>
                 <tr>
                     <th>Name</th>
@@ -70,7 +70,6 @@ const Customers = ()=> {
                                 <td>{customer.name}</td>
                                 <td>{customer.username}</td>
                                 <td>{customer.email}</td>
-                                <td/>
                             </tr>
                         ))
                     }

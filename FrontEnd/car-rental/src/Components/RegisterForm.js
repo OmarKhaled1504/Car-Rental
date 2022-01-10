@@ -39,7 +39,8 @@ import axios from 'axios';
                 },
             body: JSON.stringify(jsonData) 
         })
-                history.push('/admin')
+                sessionStorage.setItem("username",username);
+                history.push('/user')
         }else {
             alert("Username or email already exists");
         }

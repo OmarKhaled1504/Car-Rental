@@ -14,11 +14,11 @@ function Reservations() {
     const [reservationStatus, setReservationStatus] = useState("All");
     const [paymentStatus, setPaymentStatus] = useState("All");
     const [reservations, setReservations] = useState(null);
-    const[Model,setModel] = useState(null);
-    const[year,setYear] = useState(null);
-    const[color,setColor] = useState(null) ;
-    const[manufacturer,setManufacturer] = useState(null);
-    const[EndDate,setEndDate] = useState(null) ;
+    const [Model,setModel] = useState(null);
+    const [year,setYear] = useState(null);
+    const [color,setColor] = useState(null) ;
+    const [manufacturer,setManufacturer] = useState(null);
+    const [EndDate,setEndDate] = useState(null) ;
     const Search = () => {
         setSearch(true);
     }
@@ -100,12 +100,14 @@ function Reservations() {
                         <option name="Not Paid">Not Paid</option>
                     </select>
                     <div>
-                    <button className="button" onClick = {Submit} >Submit</button>
+                    <div className='buttonContainer'>
+                        <button className="button" onClick = {Submit} >Submit</button>
+                    </div>
                 </div>
             </div>}
                 </div>}
                 {status && <div>
-                <table>
+                <table className='Table'>
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -140,7 +142,9 @@ function Reservations() {
                         }
                     </tbody>
                 </table>
-                <button className='button' onClick={Return}> return </button>
+                <div className='buttonContainer'>
+                        <button className='button' onClick={Return}> return </button>
+                </div>
             </div>}
               
         </div>

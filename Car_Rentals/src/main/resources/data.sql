@@ -11,3 +11,6 @@ insert ignore into reservations values("abc124","sengbeng781","2022-01-20","2022
 insert ignore into reservations values("way891","ketch555","2022-01-01","2022-01-09","picked up",4500,"paid");
 insert ignore into reservations values("unt093","ramadona9091","2022-01-10","2022-01-30","picked up",30000,"paid");
 insert ignore into reservations values("abc124","sengbeng781","2022-02-02","2022-02-09","incoming",4000,"not paid") ;
+insert ignore into car values("ytg654","blue","kia","suv","sportage",2018,400,"Available","Alex","https://i1.wp.com/bestsellingcarsblog.com/wp-content/uploads/2018/09/Kia-Carens-Spain-August-2018.-Picture-autocar.co_.uk_.jpg%22");
+insert ignore into car values("ki98t1","white","geely","sedan","emrgrand7",2018,200,"Available","Cairo","https://ymimg1.b8cdn.com/resized/car_model/3859/pictures/3437113/mobile_listing_main_2018_Geely_Emgrand_7__2_.jpg%22");
+insert ignore into car values("98gh0t","black","fiat","sedan","tipo",2019,600,"Available","Alex","https://www.fiat.com.eg/images/cars/tipo/650x400tipot_footer.png%22");

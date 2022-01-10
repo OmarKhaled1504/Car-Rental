@@ -24,10 +24,10 @@ public class reservationsService {
 
     }
 
-//    @Scheduled(fixedDelay = 30000)
-//    public void updateReservation(){
-//        this.reservationsRepository.update((java.time.LocalDate.now()).toString());
-//    }
+    @Scheduled(fixedDelay = 30000)
+    public void updateReservation(){
+        this.reservationsRepository.update((java.time.LocalDate.now()).toString());
+    }
 
     public List<reservations> getReservations() {
         return this.reservationsRepository.findAll();

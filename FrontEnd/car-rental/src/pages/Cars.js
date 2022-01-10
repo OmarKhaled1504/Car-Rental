@@ -58,7 +58,6 @@ function Cars() {
                 "car_status": "Available",
                 "car_type": carType,
                 "image": photoLink
-
             }
             console.log(jsonData)
             fetch('http://localhost:8080/api/v1/car/insert', {
@@ -79,16 +78,20 @@ function Cars() {
         setInsert(true);
         setModify(false);
         setSearch(false);
+        setStatus(false)
+
     }
     const Search = () => {
         setSearch(true);
         setInsert(false);
         setModify(false);
+        setStatus(false)
     }
     const Modify = () => {
         setModify(true);
         setInsert(false);
         setSearch(false);
+        setStatus(false)
     }
     const handleModify = async () => {
         const carStatus = document.getElementById("carStatus").value;
@@ -129,7 +132,7 @@ function Cars() {
                 <button className="button" onClick={Modify} >Modify</button>
             </div>
             {status && <div>
-                <table>
+                <table className='Tablee'>
                     <thead>
                         <tr>
                             <th>manufacturer</th>
@@ -151,14 +154,14 @@ function Cars() {
                                 <td>{car.car_type}</td>
                                 <td>{car.license}</td>
                                 <td>{car.car_status}</td> 
-                                <td/>
                             </tr>
                         ))
                     }
                 </tbody>
             </table>
-
-                <button className='button' onClick={Return}> return </button>
+            <div className='buttonContainer'>
+                        <button className='button' onClick={Return}> return </button>
+                    </div>
             </div>}
             {(insert || search) && <div>
                 <div className="form-group">
@@ -208,7 +211,9 @@ function Cars() {
                     <input type="text" className="form-control" required placeholder="Photo Link" onChange={e => setPhotoLink(e.target.value)} />
                 </div>}
                 <div>
-                    <button className="button" onClick={Sumbit} >Submit</button>
+                <div className='buttonContainer'>
+                        <button className="button" onClick={Sumbit} >Submit</button>
+                    </div>
                 </div>
             </div>}
             {modify && <div>

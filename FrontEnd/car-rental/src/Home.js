@@ -79,7 +79,8 @@ const Home = () =>{
                 <BlogList cars = {cars} title="All Blogs"/>
                     <button className="Rent">Go Back </button>
                     <br/>
-                 </div>}
+                 </div>
+                }
         </div>
         </div>
         </div>

@@ -16,7 +16,7 @@ Create table IF not exists customer(
     username varchar(20),
     email varchar(40) unique,
     name varchar(30),
-    password varchar(20),
+    password varchar(50),
     primary key (username)
 );
 Create table IF not exists reservations(

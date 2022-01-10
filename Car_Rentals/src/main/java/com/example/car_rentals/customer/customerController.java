@@ -4,6 +4,8 @@ import com.example.car_rentals.car.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.util.List ;
 @RestController
 @RequestMapping(
@@ -23,13 +25,13 @@ public class customerController {
     }
 
     @PostMapping()
-    public void addNewcustomer(@RequestBody customer customer) {
+    public void addNewcustomer(@RequestBody customer customer) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         System.out.println(customer);
         this.customerService.addNewcustomer(customer);
     }
 
     @GetMapping("/verify")
-    public boolean authenticate(@RequestParam String email, @RequestParam String password) {
+    public boolean authenticate(@RequestParam String email, @RequestParam String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         boolean result = this.customerService.authenticate(email,password);
         System.out.println("received request from " + email + " " + password + " answer :" + result);
         return result;
