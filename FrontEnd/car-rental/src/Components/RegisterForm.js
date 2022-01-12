@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import axios from 'axios';
+import TextField from '@mui/material/TextField';
+import Stack from '@mui/material/Stack';
+
+
 
  const  SignUp = ()=> {
     const [username, setUserName] = useState('');
@@ -51,30 +55,26 @@ import axios from 'axios';
         history.push('/')
     }
         return (
-            <div className="Register">
+            <div className="Login">
+             <Stack spacing={6} direction="column">
                 <div className="auth-inner">
                     <form>
                     <div className="form-group">
-                            <label>Name</label>
-                            <input type="text" className="form-control" placeholder="Name" onChange={e => setName(e.target.value)}/>
+                            <TextField type="text" className="form-control" placeholder="Name" variant="standard" onChange={e => setName(e.target.value)}/>
                         </div>
                         <div className="form-group">
-                            <label>UserName</label>
-                            <input type="text" className="form-control" placeholder="Username" onChange={e => setUserName(e.target.value) }/>
+                            <TextField type="text" className="form-control" placeholder="Username" variant="standard" onChange={e => setUserName(e.target.value) }/>
                         </div>
 
                         <div className="form-group">
-                            <label>Email address</label>
-                            <input type="email" className="form-control" placeholder="E-mail" onChange={e => setEmail(e.target.value) }/>
+                            <TextField type="email" className="form-control" placeholder="E-mail" variant="standard" onChange={e => setEmail(e.target.value) }/>
                         </div>
 
                         <div className="form-group">
-                            <label>Password </label>
-                            <input type="password" className="form-control" placeholder="Password" onChange={e => setPassword(e.target.value) }/>
+                            <TextField type="password" className="form-control" placeholder="Password" variant="standard" onChange={e => setPassword(e.target.value) }/>
                         </div>
                         <div className="form-group">
-                            <label>Confirm-Password</label>
-                            <input type="password" className="form-control" placeholder="Confirm-Password" onChange={e => setConfirmPassword(e.target.value)}/>
+                            <TextField type="password" className="form-control" placeholder="Confirm-Password" variant="standard" onChange={e => setConfirmPassword(e.target.value)}/>
                         </div>
                         
                         <div>
@@ -86,6 +86,7 @@ import axios from 'axios';
                         </div>
                     </form>
                 </div>
+            </Stack>
             </div>
 
         ); 
